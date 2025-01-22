@@ -1,0 +1,35 @@
+.announcements {
+  margin-top: 20px;
+}
+
+.announcements h1 {
+  color: #2F575B; 
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.announcement {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.announcement h3 {
+  color: #2F575B;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center; /* Wyśrodkuj tytuł ogłoszenia */
+}
+
+.announcement p {
+  color: #333;
+  font-size: 1em;
+  text-align: justify; /* Wyjustuj treść ogłoszenia */
+}

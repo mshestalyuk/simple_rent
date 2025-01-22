@@ -1,0 +1,53 @@
+.apartment-details {
+    margin-top: 20px;
+  }
+  
+  .details {
+    display: flex;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #2F575B;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+  
+  .apartment-image {
+    width: 200px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .info {
+    flex: 1; /* Użyj dostępnego miejsca w kontenerze */
+  }
+  
+  .detail-item {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .apartment {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apartment:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* ... rest of your existing styles ... */
+  

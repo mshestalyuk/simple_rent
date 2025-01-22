@@ -1,0 +1,31 @@
+<div class="renter-apartment-management">
+  <!-- Rent Contract Details -->
+  <div *ngIf="rentContractDetails" class="contract-details">
+    <h2>Szczegóły Umowy Najmu</h2>
+    <p><strong>ID Umowy:</strong> {{ rentContractDetails.id }}</p>
+    <p><strong>Data zawarcia:</strong> {{ rentContractDetails.conclusionDate | date }}</p>
+    <p><strong>Data zakończenia:</strong> {{ rentContractDetails.expiresDate | date }}</p>
+    <p><strong>Opłata miesięczna:</strong> {{ rentContractDetails.montPayment }}</p>
+    <p><strong>Uwagi:</strong> {{ rentContractDetails.note }}</p>
+  </div>
+
+  <!-- Tenants List -->
+  <div *ngIf="tenants && tenants.length > 0" class="tenants">
+    <h2>Lokatorzy</h2>
+    <ul>
+      <li *ngFor="let tenant of tenants">
+        {{ tenant.name }} {{ tenant.surname }} - {{ tenant.email }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Document Links -->
+  <div *ngIf="documents && documents.length > 0" class="documents">
+    <h2>Dokumenty</h2>
+    <ul>
+      <li *ngFor="let document of documents">
+        <a href="{{ document }}" target="_blank">Otwórz dokument</a>
+      </li>
+    </ul>
+  </div>
+</div>

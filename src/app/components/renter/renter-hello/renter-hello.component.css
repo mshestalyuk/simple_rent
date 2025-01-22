@@ -1,0 +1,11 @@
+.hello h1 {
+    color: #2F575B; 
+    text-align: center;
+    letter-spacing: 3px;
+}
+ 
+.info_content {
+    font-size: 1.5em;
+    line-height: 1.8; 
+    letter-spacing: 2px;
+}  

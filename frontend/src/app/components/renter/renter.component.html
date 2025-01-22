@@ -1,0 +1,22 @@
+<!-- renter.component.html -->
+
+<div class="renter">
+    <div class="background-image"><img src="https://i.ibb.co/KwN8RmC/tenant.png" alt="Background photo"></div>
+    <div class="header">
+      <div class="menu">
+        <div class="logo" routerLink="tenant-hello">EasyRent</div>
+        <div class="menu-items">
+            <div class="menu-item" routerLink="tenant-announcements">Ogłoszenia</div>
+            <div class="menu-item" routerLink="tenant-apartment">Mieszkanie</div>
+            <div class="menu-item" routerLink="tenant-reports">Zgłoszenia</div>
+            <div class="menu-item" routerLink="tenant-account">Konto</div>
+            <div class="menu-item" (click)="logout()">Wyloguj</div>
+        </div>
+        <div class="user-icon"></div>
+      </div>
+    </div>
+  
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+  </div>

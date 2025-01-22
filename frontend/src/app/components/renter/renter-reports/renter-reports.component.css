@@ -1,0 +1,113 @@
+.tenant-reports {
+  text-align: left;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  color: #2F575B;
+  letter-spacing: 3px;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #2F575B;
+  letter-spacing: 3px;
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+
+.tenant-report {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.status {
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.in-progress {
+  background-color: #f0ad4e; /* Yellow for in-progress */
+}
+
+.completed {
+  background-color: #5cb85c; /* Green for completed */
+}
+
+.add-report {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #2F575B;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block; /* Make the button block to occupy the full width */
+  width: 100%;
+}
+
+button:hover {
+  background-color: #1a4144;
+}
+
+/* ... Other styles ... */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.form-group select {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style the select dropdown based on the selected option */
+#urgency {
+  color: #555; /* Default text color */
+}
+
+#urgency option[value="yellow"] {
+  background-color: yellow;
+}
+
+#urgency option[value="red"] {
+  background-color: red;
+}
+
+#urgency option[value="green"] {
+  background-color: green;
+}
+
+/* ... Other styles ... */
