@@ -1,0 +1,281 @@
+/* owner-apartment-management.component.css */
+
+/* Kontener zarządzania mieszkaniem */
+.apartment-management-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sekcja wyświetlania szczegółów mieszkania */
+.apartment-display-details {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.apartment-display-details p {
+  margin: 5px 0;
+}
+
+/* Sekcja aktualizacji szczegółów mieszkania */
+.apartment-details, .contract-item-big{
+  margin-bottom: 20px;
+  background-color: #ffe5c9;
+  padding: 50px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+
+}
+
+/* Etykieta */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Pola wejściowe */
+input,
+textarea {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Przyciski */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Kontener przycisków */
+.button-container {
+  text-align: right;
+}
+
+/* Nagłówek sekcji */
+h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .apartment-management-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Sekcja umów najmu */
+.rent-contracts {
+  margin-bottom: 20px;
+}
+
+/* Lista umów najmu */
+.rent-contracts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Element listy umów najmu */
+.rent-contracts li {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+/* Stylizacja checkboxa */
+.add-tenant label.checkbox-label {
+  display: flex;
+  align-items: left;
+}
+
+.add-tenant input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Dodanie stylizacji dla opcji Tak/Nie */
+.add-tenant label.radio-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-tenant input[type="radio"] {
+  margin-right: 8px;
+}
+
+/* Kolorowa stylizacja dla opcji Tak/Nie */
+.add-tenant input[type="radio"] + span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4caf50; /* Kolor zielony */
+  border-radius: 50%;
+  margin-right: 5px;
+  position: relative;
+}
+
+.add-tenant input[type="radio"]:checked + span::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #4caf50; /* Kolor zielony */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.add-tenant input[type="radio"] + span::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 2px solid #4caf50; /* Kolor zielony */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+.add-tenant input[type="radio"]:checked + span::before {
+  opacity: 0;
+}
+
+
+/* Przyciski w sekcji umów najmu */
+.rent-contracts button {
+  background-color: #2196F3;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.rent-contracts button:hover {
+  background-color: #0b7dda;
+}
+
+/* Sekcja dodawania lokatora */
+.add-tenant {
+  margin-bottom: 20px;
+}
+
+/* Etykieta w sekcji dodawania lokatora */
+.add-tenant label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Pole wyboru w sekcji dodawania lokatora */
+.add-tenant input[type="checkbox"] {
+  margin-bottom: 10px;
+}
+
+/* Dodatkowe style dla przycisków w sekcji dodawania lokatora */
+.add-tenant .button-container button {
+  background-color: #2196F3;
+}
+
+.add-tenant .button-container button:hover {
+  background-color: #0b7dda;
+}
+
+/* Sekcja informacji o lokatorze */
+.tenant-details {
+  margin-bottom: 20px;
+}
+
+/* Lista lokatorów */
+.tenant-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Element listy lokatorów */
+.tenant-details li {
+  margin-bottom: 10px;
+}
+
+/* Dodatkowe style dla przycisków w sekcji informacji o lokatorze */
+.tenant-details .button-container button {
+  background-color: #ff9800;
+}
+
+.tenant-details .button-container button:hover {
+  background-color: #e68a00;
+}
+/* Dodatkowe style dla elementu select */
+/* Stylizacja dla etykiety select */
+.add-tenant label {
+  display: block;
+  margin-bottom: 8px; /* Lekki margines nad etykietą */
+  font-weight: bold;
+}
+
+/* Stylizacja dla elementu select */
+.add-tenant select {
+  width: 100%;
+  padding: 12px; /* Zwiększony padding */
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #333;
+  appearance: none; /* Resetowanie domyślnego wyglądu dla niektórych przeglądarek */
+  cursor: pointer;
+  font-size: 16px; /* Zwiększony rozmiar tekstu */
+}
+
+.add-tenant select:hover {
+  border-color: #888;
+}
+
+.add-tenant select:focus {
+  outline: none;
+  border-color: #4caf50; /* Kolor zielony przy aktywnym elemencie */
+}
+
+/* Stylizacja dla opcji w rozwijanej liście */
+.add-tenant select option {
+  padding: 12px; /* Zwiększony padding */
+  background-color: #fff;
+  color: #333;
+  font-size: 16px; /* Zwiększony rozmiar tekstu */
+}
+
+.add-tenant select option:hover {
+  background-color: #ddd;
+}
+
+.add-tenant select option:checked {
+  background-color: #4caf50; /* Kolor zielony dla zaznaczonej opcji */
+  color: #fff;
+}

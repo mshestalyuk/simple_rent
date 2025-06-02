@@ -1,0 +1,81 @@
+<!-- home.component.html -->
+
+<div class="home">
+    <div class="background-image"><img src="https://i.ibb.co/Rc25btN/background.png" alt="Background photo" ></div>
+    <div class="header">
+      <div class="menu">
+        <div class="logo" (click)="scrollToTop()">EasyRent</div>
+        <div class="menu-items">
+          <div class="menu-item" (click)="scrollToSection('tutorial')">Początek</div>
+          <div class="menu-item" (click)="scrollToSection('info')">Informacje</div>
+          <div class="menu-item" (click)="redirectToLogin()">Logowanie</div>
+        </div>
+        <div class="user-icon"></div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="content" id="start">
+        <h1>EasyRent</h1>
+        <p>Odkryj wygodę w wynajmie.</p>
+        <button (click)="redirectToLogin()">DOŁĄCZ</button>
+      </div>
+  
+      <div id="tutorial" class="section">
+        <h1>JAK ZACZĄĆ?</h1>
+
+        <div class="tutorial_owner">
+          <h2>wynajmujący</h2>
+
+          <div class="steps-container">
+            <div class="step owner">
+              <img src="https://i.ibb.co/K5VdjRh/login.png" alt="Krok 1">
+              <p>1. Załóż darmowe konto w serwisie Easyrent</p>
+            </div>
+            <div class="step owner">
+              <img src="https://i.ibb.co/Zgwxn71/form.png" alt="Krok 2">
+              <p>2. Dodaj swoje mieszkanie i uzupełnij jego dane</p>
+            </div>
+            <div class="step owner">
+              <img src="https://i.ibb.co/Pt5pKFx/generowanie.png" alt="Krok 3">
+              <p>3. Dodaj mieszkańców generując im dane do logowania</p>
+            </div>
+            <div class="step owner">
+              <img src="https://i.ibb.co/c33nKHH/man.png" alt="Krok 4">
+              <p>4. Od teraz możesz z łatwością komunikować się z wynajmującymi</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tutorial_renter">
+          <h2>najemca</h2>
+          <div class="steps-container">
+            <div class="step tenant">
+              <img src="https://i.ibb.co/C8dtCPc/bierz-dane.png" alt="Krok 1">
+              <p>1. Otrzymaj dane logowania od właściciela mieszkania</p>
+            </div>
+            <div class="step tenant">
+              <img src="https://i.ibb.co/5x1ytpx/haslo.png" alt="Krok 2">
+              <p>2. Zmień wygenerowane hasło i uzupełnij swoje dane</p>
+            </div>
+            <div class="step tenant">
+              <img src="https://i.ibb.co/c33nKHH/man.png" alt="Krok 3">
+              <p>3. Od teraz możesz z łatwością komunikować się z właścicielem</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+  
+      <div id="info" class="section">
+        <h1>INFORMACJE</h1>
+        <div class="info_content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam maximus sapien in eros eleifend porta a non ex. Mauris volutpat augue eu ex porttitor luctus. Pellentesque rhoncus quam sit amet est volutpat iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus placerat condimentum dui, sed porta turpis porttitor sed. Nam a metus vel orci pretium placerat. Vestibulum eu augue tortor. Maecenas in neque tortor. Pellentesque orci eros, ullamcorper sit amet iaculis quis, elementum quis tellus. Suspendisse eget sem mattis, accumsan mi gravida, aliquet ligula. Aliquam pulvinar enim quis eros viverra bibendum. Aliquam ut tortor tincidunt, efficitur nulla ac, posuere est. Vestibulum scelerisque libero vitae efficitur pulvinar. Vivamus ante neque, aliquet sed tincidunt vitae, tempor sed tortor.</p>
+          <p>Duis vehicula ex laoreet vehicula consequat. Cras vel tristique nunc. Fusce nisi ipsum, molestie et felis eget, faucibus luctus turpis. Suspendisse bibendum leo vitae porta pharetra. Vivamus orci lacus, consectetur a viverra eu, pulvinar vitae metus. Quisque elementum diam lectus. In aliquam est sit amet odio imperdiet, sit amet dapibus nulla placerat. Etiam vel lacus erat.</p>
+          <p>Duis ut tempus nisi. Praesent magna dui, sagittis eget tellus eget, rhoncus elementum est. Mauris molestie aliquet augue, non sollicitudin nibh molestie ac. Nam ultricies leo at lorem vulputate scelerisque. Nunc pulvinar iaculis ligula, non ullamcorper odio fermentum vitae. Donec sit amet est dui. Aenean ut rutrum lorem. Donec mollis urna eu sagittis varius.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

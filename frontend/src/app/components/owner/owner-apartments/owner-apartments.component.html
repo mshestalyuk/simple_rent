@@ -1,0 +1,29 @@
+<!-- owner-apartments.component.html -->
+<div class="apartments">
+  <div *ngIf="!apartments.empty; else noApartments">
+    <h1>Twoje mieszkania</h1>
+    <div *ngFor="let apartment of apartments.content" class="apartment" (click)="onApartmentClick(apartment.id)">
+      <h2>Mieszkanie</h2>
+      <p>Adresa: {{ apartment.address }}</p>
+      <p>Informacje: {{ apartment.note }}</p>
+      <button (click)="deleteApartment($event, apartment.id)">Usuń mieszkanie</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noApartments>
+  <p>Brak dostępnych mieszkań.</p>
+</ng-template>
+
+<div class="add-apartment">
+  <h2>Dodaj nowe mieszkanie</h2>
+  <form (ngSubmit)="addApartment()" #apartmentForm="ngForm">
+    <label for="address">Adres:</label>
+    <input type="text" id="address" name="address" [(ngModel)]="newApartment.address" required>
+
+    <label for="note">Informacje:</label>
+    <textarea id="note" name="note" [(ngModel)]="newApartment.note"></textarea>
+
+    <button type="submit">Dodaj mieszkanie</button>
+  </form>
+</div>

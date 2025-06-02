@@ -1,0 +1,27 @@
+.renter-apartment-management {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.renter-apartment-management h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.contract-details p, .tenants li, .documents li {
+  margin: 5px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #e8e8e8;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}

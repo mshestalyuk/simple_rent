@@ -1,0 +1,82 @@
+.renter {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  position: fixed;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100vh;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2F575B;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  height: 80px;
+}
+
+.logo, .user-icon {
+  width: 25%;
+  height: 80px;
+  display: grid;
+  place-items: center; 
+}
+
+.logo {
+  font-size: 24px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.menu-items {
+  display: flex;
+  width: 50%;
+  height: 80px;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.menu-item {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  cursor: pointer;
+  padding: 0px 30px;
+  height: 80px;
+}
+.menu-item:hover {
+  background-color: #1a4144;
+}
+.user-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.container {
+  margin: 100px auto; 
+  width: 80%; 
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+

@@ -1,0 +1,92 @@
+.reports-container {
+    margin: 20px;
+  }
+  
+  .report-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .report-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .report-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .report-item[data-urgency="yellow"] .report-icon {
+    background-color: yellow;
+  }
+  
+  .report-item[data-urgency="red"] .report-icon {
+    background-color: red;
+  }
+  
+  .report-item[data-urgency="green"] .report-icon {
+    background-color: green;
+  }
+  
+  .report-content {
+    flex-grow: 1;
+  }
+  
+  .problem-title {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .problem-details {
+    margin: 5px 0;
+  }
+  
+  .tenant-info {
+    font-style: italic;
+    color: #666;
+  }
+  
+  /* Existing CSS rules... */
+
+.report-date {
+    color: #888;
+    margin: 5px 0;
+  }
+  
+  .report-status {
+    margin-top: 10px;
+  }
+  
+  .report-status label {
+    margin-right: 10px;
+  }
+  
+  .report-status select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Add styles for status based on the selected option */
+  .report-item select[name="status"] {
+    color: #fff;
+    background-color: #5cb85c; /* Default to green for opened */
+  }
+  
+  .report-item select[name="status"] option[value="opened"] {
+    background-color: #5cb85c; /* Green for opened */
+  }
+  
+  .report-item select[name="status"] option[value="solved"] {
+    background-color: #f0ad4e; /* Yellow for solved */
+  }
+  
+  .report-item select[name="status"] option[value="closed"] {
+    background-color: #d9534f; /* Red for closed */
+  }
