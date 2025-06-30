@@ -17,3 +17,46 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    networks:
+      - simplerent_network
+
+  simplerent_database:
+    container_name: simplerent_database
+    restart: unless-stopped
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: simplerent_user
+      POSTGRES_PASSWORD: simplerent_password
+      POSTGRES_DB: simplerent_db
+    volumes:
+      - ./backend/sql/schema.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./backend/sql/data.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./backend/sql/data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "simplerent_user"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - simplerent_network
+
+  simplerent_backend:
+    container_name: simplerent_backend
+    restart: unless-stopped
+    build:
+      context: ./backend
+      dockerfile: ./backend.Dockerfile
+    ports:
+      - 8081:8081
+    environment:
+      - environment.allowedOrigins=http://localhost:4200,http://localhost:8077,http://localhost:80
+    depends_on:
+      - simplerent_database
+    networks:
+      - simplerent_network
+
+networks:
+  simplerent_network:
+    driver: bridge
