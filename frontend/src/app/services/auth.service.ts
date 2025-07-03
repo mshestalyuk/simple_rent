@@ -1,5 +1,5 @@
 // auth.service.ts
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { tap } from 'rxjs/operators';
@@ -7,17 +7,22 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/auth-token';
 import { RegistrationForm } from 'src/app/interfaces/registration-form';
 import { LoginForm } from '../interfaces/login-form';
-import { MessageService } from 'primeng/api';
+import { BaseService } from './base.service';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends BaseService {
   private loggedInUser: User | null = null;
-  private baseUrl = 'https://knowyourteacher.online:81';
   private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    configService: ConfigService
+  ) {
+    super(configService);
+  }
   
   isLoggedIn(): boolean {
     return !!this.loggedInUser;
@@ -28,18 +33,13 @@ export class AuthService {
   }
 
   registerUser(userDetails: RegistrationForm): Observable<any> {
-    const url = `${this.baseUrl}/easyrent-api/v1/register_owner`;
+    const url = `${this.getBaseUrl()}/easyrent-api/v1/register_owner`;
     return this.http.post(url, userDetails);
   }
 
   registerTenant(userDetails: RegistrationForm): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-    const url = `${this.baseUrl}/easyrent-api/v1/register_tenant`;
-    return this.http.post(url, userDetails, { headers }).pipe(
+    const url = `${this.getBaseUrl()}/easyrent-api/v1/register_tenant`;
+    return this.http.post(url, userDetails, { headers: this.getAuthHeaders() }).pipe(
       tap((response: any) => {
         if (response && response.id) {
           localStorage.setItem('residentUserId', response.id);
@@ -49,12 +49,11 @@ export class AuthService {
   }
   
   loginUser(loginForm: LoginForm) {
-    const loginEndpoint = `${this.baseUrl}/easyrent-api/v1/login`;
+    const loginEndpoint = `${this.getBaseUrl()}/easyrent-api/v1/login`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(loginEndpoint, loginForm, { headers }).pipe(
       tap((response: any) => {
         if (response && response.token) {
-          // Jeśli otrzymamy token, zapisz go w localStorage i zainicjuj użytkownika
           localStorage.setItem('token', response.token);
           this.initializeUser();
         }

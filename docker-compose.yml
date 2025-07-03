@@ -52,6 +52,7 @@ services:
       - 8081:8081
     environment:
       - environment.allowedOrigins=http://localhost:4200,http://localhost:8077,http://localhost:80
+      - BACKEND_API_URL=http://localhost:8081
     depends_on:
       - simplerent_database
     networks:

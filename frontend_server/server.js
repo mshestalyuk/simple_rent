@@ -47,6 +47,13 @@ app.get('/api/debug/files', (req, res) => {
   }
 });
 
+app.get('/api/config', (req, res) => {
+  res.json({
+    backendApiUrl: process.env.BACKEND_API_URL || 'http://simplerent_backend:8081',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // Serve static files from the Angular app
 const staticPath = path.join(__dirname, 'dist');
 console.log(`Serving static files from: ${staticPath}`);
