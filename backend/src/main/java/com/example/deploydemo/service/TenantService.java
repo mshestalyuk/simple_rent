@@ -95,7 +95,7 @@ public class TenantService {
                     );
 
             return ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path(String.format("/easyrent-api/v1/apartments/%s/rentcontracts/%s/", id, contractId))
+                    .path(String.format("/simplerent-api/v1/apartments/%s/rentcontracts/%s/", id, contractId))
                     .path(tenantRepository.save(tenantMapper.tenantFromRequestDto(tenantRequestDto, rentContract))
                             .getId().toString())
                     .build().toUri();

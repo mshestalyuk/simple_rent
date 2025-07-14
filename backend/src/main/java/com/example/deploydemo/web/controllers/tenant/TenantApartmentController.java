@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/easyrent-api/v1/tenant/apartments")
+@RequestMapping("/simplerent-api/v1/tenant/apartments")
 public class TenantApartmentController {
 
     private final ApartmentService apartmentService;

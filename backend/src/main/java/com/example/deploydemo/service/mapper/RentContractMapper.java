@@ -16,7 +16,7 @@ public abstract class RentContractMapper {
 
     @Mapping(target = "documentLink", expression = """
             java( org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentContextPath()
-                            .path(String.format("/easyrent-api/v1/apartments/%s/rentcontracts/%s/document", rentContract.getApartment().getId(), rentContract.getId()))
+                            .path(String.format("/simplerent-api/v1/apartments/%s/rentcontracts/%s/document", rentContract.getApartment().getId(), rentContract.getId()))
                             .build().toUriString(); )""")
     public abstract RentContractResponseDto rentContractToResponseDto(RentContract rentContract);
 

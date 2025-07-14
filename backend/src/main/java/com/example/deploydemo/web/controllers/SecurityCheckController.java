@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/easyrent-api/v1/security_checks")
+@RequestMapping("/simplerent-api/v1/security_checks")
 public class SecurityCheckController {
 
     @Value("${environment.allowedOrigins}")

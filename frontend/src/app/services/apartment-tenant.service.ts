@@ -11,7 +11,7 @@ import { ConfigService } from './config.service';
 })
 export class ApartmentTenantService extends BaseService {
   private get tenantUrl(): string {
-    return `${this.getBaseUrl()}/easyrent-api/v1/tenant`;
+    return `${this.getBaseUrl()}/simplerent-api/v1/tenant`;
   }
 
   constructor(

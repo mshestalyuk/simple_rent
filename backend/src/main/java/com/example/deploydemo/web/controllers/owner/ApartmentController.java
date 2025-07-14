@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/easyrent-api/v1/apartments")
+@RequestMapping("/simplerent-api/v1/apartments")
 public class ApartmentController {
     private final ApartmentService apartmentService;
     private final RentContractService rentContractService;

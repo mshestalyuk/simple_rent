@@ -42,7 +42,7 @@ public class ContractService {
         contract.setName(fileName);
         contract.setData(contractData);
         return ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/easyrent-api/v1/documents/")
+                .path("/simplerent-api/v1/documents/")
                 .path(contractRepository.save(contract).getUuid().toString())
                 .build().toUri();
     }
@@ -101,7 +101,7 @@ public class ContractService {
             }
             contractRepository.save(contract);
             return ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path(String.format("/easyrent-api/v1/apartments/%s/rentcontracts/%s/document", id, contractId))
+                    .path(String.format("/simplerent-api/v1/apartments/%s/rentcontracts/%s/document", id, contractId))
                     .build().toUri();
         } else throw new ApartmentNotFoundException(
                 String.format("Apartment with id = %s not found or not belong to user with id = %s", id, userId)

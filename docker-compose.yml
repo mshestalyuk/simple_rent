@@ -33,7 +33,7 @@ services:
     volumes:
       - ./backend/sql/schema.sql:/docker-entrypoint-initdb.d/1.sql
       - ./backend/sql/data.sql:/docker-entrypoint-initdb.d/2.sql
-      - ./backend/sql/data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data 
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "simplerent_user"]
       interval: 30s
@@ -61,3 +61,6 @@ services:
 networks:
   simplerent_network:
     driver: bridge
+
+volumes:
+  postgres_data:  # Declare the named volume

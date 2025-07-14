@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/easyrent-api/v1")
+@RequestMapping("/simplerent-api/v1")
 public class AuthController {
     private final AuthService authService;
 

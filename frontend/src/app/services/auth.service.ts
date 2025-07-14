@@ -33,12 +33,12 @@ export class AuthService extends BaseService {
   }
 
   registerUser(userDetails: RegistrationForm): Observable<any> {
-    const url = `${this.getBaseUrl()}/easyrent-api/v1/register_owner`;
+    const url = `${this.getBaseUrl()}/simplerent-api/v1/register_owner`;
     return this.http.post(url, userDetails);
   }
 
   registerTenant(userDetails: RegistrationForm): Observable<any> {
-    const url = `${this.getBaseUrl()}/easyrent-api/v1/register_tenant`;
+    const url = `${this.getBaseUrl()}/simplerent-api/v1/register_tenant`;
     return this.http.post(url, userDetails, { headers: this.getAuthHeaders() }).pipe(
       tap((response: any) => {
         if (response && response.id) {
@@ -49,7 +49,7 @@ export class AuthService extends BaseService {
   }
   
   loginUser(loginForm: LoginForm) {
-    const loginEndpoint = `${this.getBaseUrl()}/easyrent-api/v1/login`;
+    const loginEndpoint = `${this.getBaseUrl()}/simplerent-api/v1/login`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(loginEndpoint, loginForm, { headers }).pipe(
       tap((response: any) => {
