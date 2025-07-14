@@ -49,7 +49,7 @@ app.get('/api/debug/files', (req, res) => {
 
 app.get('/api/config', (req, res) => {
   res.json({
-    backendApiUrl: process.env.BACKEND_API_URL || 'http://simplerent_backend:8081',
+    backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:8081',
     environment: process.env.NODE_ENV || 'development'
   });
 });
