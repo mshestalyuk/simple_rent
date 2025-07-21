@@ -13,6 +13,8 @@ import { passwordMatchValidator } from 'src/app/shared/password-match.directive'
 })
 export class RegisterComponent {
 
+  passwordStrength: 'weak' | 'medium' | 'strong' | '' = '';
+
   registerForm = this.fb.group({
     name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
     surname: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)]],
@@ -31,7 +33,37 @@ export class RegisterComponent {
     private authService: AuthService,
     private messageService: MessageService,
     private router: Router
-  ) { }
+  ) {
+    // Subscribe to password changes to update strength
+    this.password.valueChanges.subscribe(value => {
+      this.passwordStrength = this.calculatePasswordStrength(value || '');
+    });
+  }
+  private calculatePasswordStrength(password: string): 'weak' | 'medium' | 'strong' | '' {
+    if (!password) return '';
+    
+    let strength = 0;
+    
+    // Check length
+    if (password.length >= 8) strength++;
+    if (password.length >= 12) strength++;
+    
+    // Check for lowercase
+    if (/[a-z]/.test(password)) strength++;
+    
+    // Check for uppercase
+    if (/[A-Z]/.test(password)) strength++;
+    
+    // Check for numbers
+    if (/\d/.test(password)) strength++;
+    
+    // Check for special characters
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    
+    if (strength <= 2) return 'weak';
+    if (strength <= 4) return 'medium';
+    return 'strong';
+  }   
 
   get name() {
     return this.registerForm.controls['name'];

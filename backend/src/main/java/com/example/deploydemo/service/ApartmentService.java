@@ -45,7 +45,7 @@ public class ApartmentService {
     public URI createApartment(ApartmentRequestDto apartmentRequestDto) {
         Apartment apartment = apartmentMapper.apartmentFromRequestDto(apartmentRequestDto);
         return ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/easyrent-api/v1/apartments/")
+                .path("/simplerent-api/v1/apartments/")
                 .path(apartmentRepository.save(apartment).getId().toString())
                 .build().toUri();
     }

@@ -1,91 +1,272 @@
-<!-- home.component.html -->
+<!-- register.component.html -->
 
 <div class="register">
-  <div class="background-image"><img src="https://i.ibb.co/MR5ZVpM/obraz-2024-01-03-194212962.png" alt="Background photo"></div>
+  <!-- Animated Background -->
+  <div class="animated-background"></div>
+  
+  <!-- Floating shapes for visual interest -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  
+  <!-- Header -->
   <div class="header">
-    <div class="menu">
-      <div class="logo" (click)="returnHome()">EasyRent</div>
-      <div class="menu-items">
-        <div class="menu-item" (click)="redirectSection('tutorial')">Początek</div>
-        <div class="menu-item" (click)="redirectSection('info')">Informacje</div>
-        <div class="menu-item" (click)="redirectToLogin()">Logowanie</div>
+    <nav class="navbar">
+      <div class="logo" (click)="returnHome()">
+        <span class="logo-text">Simple<span class="logo-accent">Rent</span></span>
       </div>
-      <div class="user-icon"></div>
-    </div>
+      <div class="nav-links">
+        <a class="nav-link" (click)="redirectSection('tutorial')">Get Started</a>
+        <a class="nav-link" (click)="redirectSection('info')">About</a>
+        <a class="nav-link cta-button" (click)="redirectToLogin()">Sign In</a>
+      </div>
+      <div class="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
   </div>
 
+  <!-- Register Container -->
+  <div class="register-container">
+    <div class="register-card">
+      <!-- Decorative gradient orb -->
+      <div class="gradient-orb"></div>
+      
+      <form [formGroup]="registerForm" (ngSubmit)="submitDetails()" class="register-form">
+        <div class="form-header">
+          <h2>Create Account</h2>
+          <p>Join thousands of landlords and tenants</p>
+        </div>
 
-  <div class="container">
-    <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
-      <div class="form-header">
-        <h2>REJESTRACJA</h2>
-      </div>
-<!-- name -->
-      <div class="form-group">
-        <input type="text" id="name" formControlName="name" name="name" placeholder="Name" required/>
-        <small *ngIf="name.invalid && (name.dirty || name.touched)" class="block p-error">
-          <div *ngIf="name.errors?.['required']">Name is required.</div>
-          <div *ngIf="name.errors?.['pattern']">Enter a valid name.</div>
-        </small>
-      </div>
-<!-- surname -->
-      <div class="form-group">
-        <input type="text" id="surname" formControlName="surname" name="surname" placeholder="Surname" required/>
-        <small *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="block p-error">
-          <div *ngIf="surname.errors?.['required']">Surname is required.</div>
-          <div *ngIf="surname.errors?.['pattern']">Enter a valid surname</div>
-        </small>
-      </div>
-<!-- email -->
-      <div class="form-group">
-        <input type="email" id="email" formControlName="email" name="email" placeholder="Email" required>
-        <small *ngIf="email.invalid && (email.dirty || email.touched)"class="block p-error">
-            <div *ngIf="email.errors?.['required']">Email jest wymagany.</div>
-            <div *ngIf="email.errors?.['email']">Wprowadź prawidłowy email.</div>
-        </small>
-      </div>
-<!-- contact_email -->
-      <div class="form-group">
-        <input type="text" id="contact_email" formControlName="contact_email" name="contact_email" placeholder="Contact Email" required>
-        <small *ngIf="contact_email.invalid && (contact_email.dirty || contact_email.touched)" class="block p-error">
-            <div *ngIf="email.errors?.['required']">Email is required.</div>
-            <div *ngIf="email.errors?.['contact_email']">Email should be valid</div>
-        </small>
-      </div>
-<!-- phone -->
-      <div class="form-group">
-        <input type="text" id="phone_number" formControlName="phone_number" name="phone_number" placeholder="Phone" required>
-        <small *ngIf="phone_number.invalid && (phone_number.dirty || phone_number.touched)" class="block p-error">
-          <div *ngIf="email.errors?.['required']">Phone is required.</div>
-          <div *ngIf="email.errors?.['phone_number']">Phone should be valid</div>
-        </small>
-      </div>
-<!-- role -->
-<!-- password -->
-      <div class="form-group">
-        <input type="password" id="password" formControlName="password" name="password" placeholder="Password" required>
-        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
-            <div *ngIf="password.errors?.['required']">Password is required.</div>
-        </small>
-      </div>
-<!-- confirmPassword -->
-      <div class="form-group">
-        <input type="password" id="confirmPassword" formControlName="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-        <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="block p-error">
-          <div *ngIf="confirmPassword.errors?.['required']">Confirm the password</div>
-        </small>
-        <small class="block p-error" *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid">
-          Password should match
-        </small>
-      </div>
+        <!-- Progress indicator -->
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
 
-      <div class="form-group">
-        <button type="submit">Zarejestruj się</button>
-      </div>
+        <div class="form-grid">
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 18V17C3 14.7909 4.79086 13 7 13H13C15.2091 13 17 14.7909 17 17V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              First Name
+            </label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name" 
+              name="name" 
+              placeholder="John"
+              required
+              [class.error]="name.invalid && (name.dirty || name.touched)"
+            >
+            <div class="error-messages" *ngIf="name.invalid && (name.dirty || name.touched)">
+              <small *ngIf="name.errors?.['required']">First name is required</small>
+              <small *ngIf="name.errors?.['pattern']">Please enter a valid name</small>
+            </div>
+          </div>
 
-        <div class="login-info">
-        Masz już konto? <a (click)="redirectToLogin()">Zaloguj się</a>
-      </div>
-    </form>
+          <!-- Surname -->
+          <div class="form-group">
+            <label for="surname">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 18V17C3 14.7909 4.79086 13 7 13H13C15.2091 13 17 14.7909 17 17V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Last Name
+            </label>
+            <input 
+              type="text" 
+              id="surname" 
+              formControlName="surname" 
+              name="surname" 
+              placeholder="Doe"
+              required
+              [class.error]="surname.invalid && (surname.dirty || surname.touched)"
+            >
+            <div class="error-messages" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
+              <small *ngIf="surname.errors?.['required']">Last name is required</small>
+              <small *ngIf="surname.errors?.['pattern']">Please enter a valid surname</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 5C3 3.89543 3.89543 3 5 3H15C16.1046 3 17 3.89543 17 5V15C17 16.1046 16.1046 17 15 17H5C3.89543 17 3 16.1046 3 15V5Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 7L10 11L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Email Address
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            name="email" 
+            placeholder="john@example.com"
+            required
+            [class.error]="email.invalid && (email.dirty || email.touched)"
+          >
+          <div class="error-messages" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <small *ngIf="email.errors?.['required']">Email is required</small>
+            <small *ngIf="email.errors?.['email']">Please enter a valid email address</small>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <!-- Contact Email -->
+          <div class="form-group">
+            <label for="contact_email">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M17 6L10 10L3 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 6C3 4.89543 3.89543 4 5 4H15C16.1046 4 17 4.89543 17 6V14C17 15.1046 16.1046 16 15 16H5C3.89543 16 3 15.1046 3 14V6Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Contact Email
+            </label>
+            <input 
+              type="email" 
+              id="contact_email" 
+              formControlName="contact_email" 
+              name="contact_email" 
+              placeholder="contact@example.com"
+              required
+              [class.error]="contact_email.invalid && (contact_email.dirty || contact_email.touched)"
+            >
+            <div class="error-messages" *ngIf="contact_email.invalid && (contact_email.dirty || contact_email.touched)">
+              <small *ngIf="contact_email.errors?.['required']">Contact email is required</small>
+              <small *ngIf="contact_email.errors?.['email']">Please enter a valid email</small>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone_number">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 2H8L10 7L8 9C9.10457 11.4252 11.5748 13.8954 14 15L16 13L21 15V18C21 19.1046 20.1046 20 19 20C10.163 20 3 12.837 3 4C3 2.89543 3.89543 2 5 2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              Phone Number
+            </label>
+            <input 
+              type="tel" 
+              id="phone_number" 
+              formControlName="phone_number" 
+              name="phone_number" 
+              placeholder="+1 (555) 123-4567"
+              required
+              [class.error]="phone_number.invalid && (phone_number.dirty || phone_number.touched)"
+            >
+            <div class="error-messages" *ngIf="phone_number.invalid && (phone_number.dirty || phone_number.touched)">
+              <small *ngIf="phone_number.errors?.['required']">Phone number is required</small>
+              <small *ngIf="phone_number.errors?.['pattern']">Please enter a valid phone number</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="5" y="9" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 9V6C7 4.34315 8.34315 3 10 3C11.6569 3 13 4.34315 13 6V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="13" r="1" fill="currentColor"/>
+            </svg>
+            Password
+          </label>
+          <div class="password-strength">
+            <input 
+              type="password" 
+              id="password" 
+              formControlName="password" 
+              name="password" 
+              placeholder="Create a strong password"
+              required
+              [class.error]="password.invalid && (password.dirty || password.touched)"
+            >
+            <div class="strength-indicator">
+              <div class="strength-bar" [class.weak]="passwordStrength === 'weak'" [class.medium]="passwordStrength === 'medium'" [class.strong]="passwordStrength === 'strong'"></div>
+            </div>
+          </div>
+          <div class="error-messages" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <small *ngIf="password.errors?.['required']">Password is required</small>
+            <small *ngIf="password.errors?.['minlength']">Password must be at least 8 characters</small>
+          </div>
+          <div class="password-requirements">
+            <small>Password must contain at least 8 characters</small>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M9 12L11 14L15 10M5 9V6C5 3.23858 7.23858 1 10 1C12.7614 1 15 3.23858 15 6V9M5 9C3.89543 9 3 9.89543 3 11V17C3 18.1046 3.89543 19 5 19H15C16.1046 19 17 18.1046 17 17V11C17 9.89543 16.1046 9 15 9M5 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Confirm Password
+          </label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            name="confirmPassword" 
+            placeholder="Re-enter your password"
+            required
+            [class.error]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) || registerForm.errors?.['passwordMismatch']"
+          >
+          <div class="error-messages" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+            <small *ngIf="confirmPassword.errors?.['required']">Please confirm your password</small>
+          </div>
+          <div class="error-messages" *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid">
+            <small>Passwords do not match</small>
+          </div>
+        </div>
+
+        <!-- Terms and Conditions -->
+        <div class="terms-section">
+          <label class="terms-checkbox">
+            <input type="checkbox" name="terms" required>
+            <span class="checkmark"></span>
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="submit-button">
+            Create Account
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+    
+        <div class="divider">
+          <span>or sign up with</span>
+        </div>
+
+        <div class="social-signup">
+          <button type="button" class="google-button">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M18.1713 8.36792H17.5V8.33337H10V11.6667H14.7096C14.0225 13.607 12.1762 15 10 15C7.23875 15 5 12.7613 5 10C5 7.23875 7.23875 5 10 5C11.2746 5 12.4342 5.48087 13.3171 6.26625L15.6742 3.90917C14.1858 2.52254 12.195 1.66671 10 1.66671C5.39792 1.66671 1.66666 5.39796 1.66666 10C1.66666 14.6021 5.39792 18.3334 10 18.3334C14.6021 18.3334 18.3333 14.6021 18.3333 10C18.3333 9.44129 18.2758 8.89587 18.1713 8.36792Z" fill="#FFC107"/>
+              <path d="M2.6275 6.12129L5.36542 8.12921C6.10625 6.29504 7.90042 5.00004 10 5.00004C11.2746 5.00004 12.4342 5.48087 13.3171 6.26629L15.6742 3.90921C14.1858 2.52254 12.195 1.66671 10 1.66671C6.79917 1.66671 4.02334 3.47379 2.6275 6.12129Z" fill="#FF3D00"/>
+              <path d="M10 18.3334C12.1525 18.3334 14.1084 17.5096 15.5871 16.17L13.0079 13.9875C12.1431 14.6452 11.0864 15.0009 10 15C7.8325 15 5.99209 13.618 5.29876 11.6892L2.58126 13.7829C3.96042 16.4817 6.76126 18.3334 10 18.3334Z" fill="#4CAF50"/>
+              <path d="M18.1713 8.36796H17.5V8.33337H10V11.6667H14.7096C14.3809 12.5902 13.7889 13.3972 13.0067 13.988L13.0079 13.9871L15.5871 16.1696C15.4046 16.3355 18.3333 14.1667 18.3333 10C18.3333 9.44129 18.2758 8.89587 18.1713 8.36796Z" fill="#1976D2"/>
+            </svg>
+            Continue with Google
+          </button>
+        </div>
+
+        <div class="login-prompt">
+          Already have an account? 
+          <a (click)="redirectToLogin()">Sign in instead</a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -87,31 +87,31 @@ public class SecurityConfig {
                             "/swagger-ui/**"
                     ).permitAll();
                     // /{id:\d+}/rentcontracts/{contractId:\d+}/tenants/{tenantId:\d+}
-                    auth.requestMatchers("/easyrent-api/v1/login").permitAll();
-                    auth.requestMatchers("/easyrent-api/v1/register_owner").permitAll();
-                    auth.requestMatchers("/easyrent-api/v1/register_tenant").hasAuthority(TENANT_USER_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/apartments/*/").hasAuthority(APARTMENTS_READ.toString());
-                    auth.requestMatchers(HttpMethod.POST,"/easyrent-api/v1/apartments").hasAuthority(APARTMENTS_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.PUT,"/easyrent-api/v1/apartments/{id}").hasAuthority(APARTMENTS_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.DELETE,"/easyrent-api/v1/apartments/{id}").hasAuthority(APARTMENTS_DELETE.toString());
+                    auth.requestMatchers("/simplerent-api/v1/login").permitAll();
+                    auth.requestMatchers("/simplerent-api/v1/register_owner").permitAll();
+                    auth.requestMatchers("/simplerent-api/v1/register_tenant").hasAuthority(TENANT_USER_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/apartments/*/").hasAuthority(APARTMENTS_READ.toString());
+                    auth.requestMatchers(HttpMethod.POST,"/simplerent-api/v1/apartments").hasAuthority(APARTMENTS_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.PUT,"/simplerent-api/v1/apartments/{id}").hasAuthority(APARTMENTS_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.DELETE,"/simplerent-api/v1/apartments/{id}").hasAuthority(APARTMENTS_DELETE.toString());
 
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/apartments/{id}/rentcontracts/*/").hasAuthority(RENT_CONTRACT_READ.toString());
-                    auth.requestMatchers(HttpMethod.POST,"/easyrent-api/v1/apartments/{id}/rentcontracts").hasAuthority(RENT_CONTRACT_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.PUT,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}").hasAuthority(RENT_CONTRACT_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.DELETE,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}").hasAuthority(RENT_CONTRACT_DELETE.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/apartments/{id}/rentcontracts/*/").hasAuthority(RENT_CONTRACT_READ.toString());
+                    auth.requestMatchers(HttpMethod.POST,"/simplerent-api/v1/apartments/{id}/rentcontracts").hasAuthority(RENT_CONTRACT_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.PUT,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}").hasAuthority(RENT_CONTRACT_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.DELETE,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}").hasAuthority(RENT_CONTRACT_DELETE.toString());
 
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/*/").hasAuthority(TENANT_READ.toString());
-                    auth.requestMatchers(HttpMethod.POST,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants").hasAuthority(TENANT_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.PUT,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/{tenantId}").hasAuthority(TENANT_CREATE.toString());
-                    auth.requestMatchers(HttpMethod.DELETE,"/easyrent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/{tenantId}").hasAuthority(TENANT_DELETE.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/*/").hasAuthority(TENANT_READ.toString());
+                    auth.requestMatchers(HttpMethod.POST,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants").hasAuthority(TENANT_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.PUT,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/{tenantId}").hasAuthority(TENANT_CREATE.toString());
+                    auth.requestMatchers(HttpMethod.DELETE,"/simplerent-api/v1/apartments/{id}/rentcontracts/{contractId}/tenants/{tenantId}").hasAuthority(TENANT_DELETE.toString());
 
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/tenant/apartments").hasRole(Role.TENANT.toString());
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/tenant/apartments/rentcontract").hasRole(Role.TENANT.toString());
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/tenant/apartments/rentcontract/tenant").hasRole(Role.TENANT.toString());
-                    auth.requestMatchers(HttpMethod.GET,"/easyrent-api/v1/tenant/apartments/rentcontract/document").hasRole(Role.TENANT.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/tenant/apartments").hasRole(Role.TENANT.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/tenant/apartments/rentcontract").hasRole(Role.TENANT.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/tenant/apartments/rentcontract/tenant").hasRole(Role.TENANT.toString());
+                    auth.requestMatchers(HttpMethod.GET,"/simplerent-api/v1/tenant/apartments/rentcontract/document").hasRole(Role.TENANT.toString());
 
 
-                    auth.requestMatchers("/easyrent-api/v1/security_checks/role_check").permitAll();
+                    auth.requestMatchers("/simplerent-api/v1/security_checks/role_check").permitAll();
                     auth.anyRequest().permitAll();
 
                 })
