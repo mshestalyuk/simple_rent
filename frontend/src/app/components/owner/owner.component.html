@@ -1,23 +1,117 @@
-<!-- owner.component.html -->
-
 <div class="owner">
-    <div class="background-image"><img src="https://i.ibb.co/ggF5hkz/owner.png" alt="Background photo"></div>
-    <div class="header">
-      <div class="menu">
-        <div class="logo" routerLink="owner-hello">EasyRent</div>
-        <div class="menu-items">
-          <div class="menu-item" routerLink="owner-announcements">Ogłoszenia</div>
-          <div class="menu-item" routerLink="owner-apartments">Mieszkania</div>
-          <div class="menu-item" routerLink="owner-reports">Zgłoszenia</div>
-          <div class="menu-item" routerLink="owner-account">Konto</div>
-          <div class="menu-item" (click)="logout()">Wyloguj</div>
-        </div>
-        <div class="user-icon"></div>
-      </div>
+    <!-- Modern animated background -->
+    <div class="animated-background"></div>
+    
+    <!-- Floating shapes for visual interest -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
     </div>
-  
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  
+    
+    <!-- Modern header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo" routerLink="owner-hello">
+                <span class="logo-text">Simple<span class="logo-accent">Rent</span></span>
+            </div>
+            
+            <div class="nav-links">
+                <a class="nav-link" routerLink="owner-announcements" routerLinkActive="active">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M13 2H7C5.89543 2 5 2.89543 5 4V16C5 17.1046 5.89543 18 7 18H13C14.1046 18 15 17.1046 15 16V4C15 2.89543 14.1046 2 13 2Z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 6H12M8 10H12M8 14H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span>Ogłoszenia</span>
+                </a>
+                
+                <a class="nav-link" routerLink="owner-apartments" routerLinkActive="active">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5 17V9L10 4L15 9V17H11V12H9V17H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Mieszkania</span>
+                </a>
+                
+                <a class="nav-link" routerLink="owner-reports" routerLinkActive="active">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 2V10L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>Zgłoszenia</span>
+                </a>
+                
+                <a class="nav-link" routerLink="owner-account" routerLinkActive="active">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M3 18V17C3 14.2386 5.23858 12 8 12H12C14.7614 12 17 14.2386 17 17V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span>Konto</span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="notification-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C17.9 5.1 20 8.3 20 12V17L22 19V20H2V19L4 17V12C4 8.3 6.1 5.1 10 4C10 2.9 10.9 2 12 2ZM12 22C10.9 22 10 21.1 10 20H14C14 21.1 13.1 22 12 22Z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="user-menu">
+                    <button class="user-button">
+                        <div class="user-avatar">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M4 21V20C4 16.6863 6.68629 14 10 14H14C17.3137 14 20 16.6863 20 20V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <p class="user-name">Jan Kowalski</p>
+                            <p class="user-email">jan@example.com</p>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" routerLink="owner-account">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2C11.6569 2 13 3.34315 13 5C13 6.65685 11.6569 8 10 8C8.34315 8 7 6.65685 7 5C7 3.34315 8.34315 2 10 2Z" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 18V16C3 13.2386 5.23858 11 8 11H12C14.7614 11 17 13.2386 17 16V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            Moje konto
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10.5 2L11.5 7H16.5L12.5 10L14 15L10 12L6 15L7.5 10L3.5 7H8.5L9.5 2H10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                            Ustawienia
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item logout" (click)="logout()">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M13 2V4H7C5.89543 4 5 4.89543 5 6V14C5 15.1046 5.89543 16 7 16H13V18H7C4.79086 18 3 16.2091 3 14V6C3 3.79086 4.79086 2 7 2H13Z" fill="currentColor"/>
+                                <path d="M15 6L17 8M17 8L15 10M17 8H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Wyloguj
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile menu toggle -->
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Main content area - no container wrapper -->
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+</div>
