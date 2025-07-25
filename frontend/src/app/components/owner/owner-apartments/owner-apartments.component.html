@@ -1,29 +1,101 @@
-<!-- owner-apartments.component.html -->
-<div class="apartments">
-  <div *ngIf="!apartments.empty; else noApartments">
-    <h1>Twoje mieszkania</h1>
-    <div *ngFor="let apartment of apartments.content" class="apartment" (click)="onApartmentClick(apartment.id)">
-      <h2>Mieszkanie</h2>
-      <p>Adresa: {{ apartment.address }}</p>
-      <p>Informacje: {{ apartment.note }}</p>
-      <button (click)="deleteApartment($event, apartment.id)">Usuń mieszkanie</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleRent - My Apartments</title>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="page-background"></div>
+    
+    <!-- Floating elements -->
+    <div class="floating-elements">
+        <div class="float-element"></div>
+        <div class="float-element"></div>
     </div>
-  </div>
-</div>
 
-<ng-template #noApartments>
-  <p>Brak dostępnych mieszkań.</p>
-</ng-template>
+    <!-- Main container -->
+    <div class="apartments-container">
+        <!-- Page header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <span class="title-accent">Your Apartments</span>
+            </h1>
+        </div>
 
-<div class="add-apartment">
-  <h2>Dodaj nowe mieszkanie</h2>
-  <form (ngSubmit)="addApartment()" #apartmentForm="ngForm">
-    <label for="address">Adres:</label>
-    <input type="text" id="address" name="address" [(ngModel)]="newApartment.address" required>
+        <!-- Apartments list -->
+        <div class="apartments-grid">
+            <!-- Apartment card example 1 -->
+            <div class="apartment-card" onclick="window.location.href='#apartment-1'">
+                <button class="delete-btn" onclick="event.stopPropagation(); deleteApartment(1)">Delete</button>
+                <div class="apartment-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M7.5 22.5V11.25L15 3.75L22.5 11.25V22.5H16.5V15H13.5V22.5H7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="apartment-title">Downtown Apartment</h3>
+                <div class="apartment-info">
+                    <svg viewBox="0 0 18 18" fill="none">
+                        <path d="M9 1.5C5.686 1.5 3 4.186 3 7.5C3 11.25 9 16.5 9 16.5C9 16.5 15 11.25 15 7.5C15 4.186 12.314 1.5 9 1.5ZM9 9.75C7.757 9.75 6.75 8.743 6.75 7.5C6.75 6.257 7.757 5.25 9 5.25C10.243 5.25 11.25 6.257 11.25 7.5C11.25 8.743 10.243 9.75 9 9.75Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>123 Main Street, City Center</span>
+                </div>
+                <div class="apartment-info">
+                    <svg viewBox="0 0 18 18" fill="none">
+                        <path d="M2.25 6.75H15.75M2.25 11.25H15.75M6.75 2.25V15.75M11.25 2.25V15.75M2.25 2.25H15.75V15.75H2.25V2.25Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>2 bedroom apartment, recently renovated</span>
+                </div>
+            </div>
 
-    <label for="note">Informacje:</label>
-    <textarea id="note" name="note" [(ngModel)]="newApartment.note"></textarea>
+            <!-- Apartment card example 2 -->
+            <div class="apartment-card" onclick="window.location.href='#apartment-2'">
+                <button class="delete-btn" onclick="event.stopPropagation(); deleteApartment(2)">Delete</button>
+                <div class="apartment-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M7.5 22.5V11.25L15 3.75L22.5 11.25V22.5H16.5V15H13.5V22.5H7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="apartment-title">Suburban House</h3>
+                <div class="apartment-info">
+                    <svg viewBox="0 0 18 18" fill="none">
+                        <path d="M9 1.5C5.686 1.5 3 4.186 3 7.5C3 11.25 9 16.5 9 16.5C9 16.5 15 11.25 15 7.5C15 4.186 12.314 1.5 9 1.5ZM9 9.75C7.757 9.75 6.75 8.743 6.75 7.5C6.75 6.257 7.757 5.25 9 5.25C10.243 5.25 11.25 6.257 11.25 7.5C11.25 8.743 10.243 9.75 9 9.75Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>456 Oak Avenue, Greenfield</span>
+                </div>
+                <div class="apartment-info">
+                    <svg viewBox="0 0 18 18" fill="none">
+                        <path d="M2.25 6.75H15.75M2.25 11.25H15.75M6.75 2.25V15.75M11.25 2.25V15.75M2.25 2.25H15.75V15.75H2.25V2.25Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                    <span>3 bedroom house with garden</span>
+                </div>
+            </div>
+        </div>
 
-    <button type="submit">Dodaj mieszkanie</button>
-  </form>
-</div>
+        <!-- No apartments message (hidden by default) -->
+        <div class="no-apartments" style="display: none;">
+            <div class="no-apartments-icon">🏠</div>
+            <p>No apartments available yet. Add your first property below!</p>
+        </div>
+
+        <!-- Add apartment section -->
+        <div class="add-apartment-section">
+            <h2>Add New Apartment</h2>
+            <form class="apartment-form" onsubmit="event.preventDefault(); addApartment();">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Enter the property address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note">Property Details</label>
+                    <textarea id="note" name="note" placeholder="Add any important details about the property"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Add Apartment</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
