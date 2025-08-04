@@ -1,22 +1,235 @@
-<div class="announcements">
-    <h1>Ogłoszenia</h1>
-    <div class="announcement-list">
-      <div class="announcement">
-        <h3>Tytuł ogłoszenia 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
-      </div>
-      <div class="announcement">
-        <h3>Tytuł ogłoszenia 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
-      </div>
-      <div class="announcement">
-        <h3>Tytuł ogłoszenia 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
-      </div>
-      <div class="announcement">
-        <h3>Tytuł ogłoszenia 4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleRent - My Announcements</title>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="page-background"></div>
+    
+    <!-- Floating elements -->
+    <div class="floating-elements">
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+        <div class="float-element"></div>
     </div>
-</div>
-  
+
+    <!-- Main container -->
+    <div class="announcements-container">
+        <!-- Page header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <span class="title-accent">Announcements</span>
+            </h1>
+            <p class="page-subtitle">Stay updated with important messages from your landlord</p>
+        </div>
+
+        <!-- Filter section -->
+        <div class="filter-section">
+            <span class="filter-label">Filter by:</span>
+            <div class="filter-chips">
+                <button class="filter-chip active">All</button>
+                <button class="filter-chip">Unread</button>
+                <button class="filter-chip">Important</button>
+                <button class="filter-chip">This Week</button>
+            </div>
+        </div>
+
+        <!-- Announcements list -->
+        <div class="announcements-list">
+            <!-- Important announcement -->
+            <div class="announcement-card important">
+                <div class="announcement-header">
+                    <div>
+                        <h3 class="announcement-title">Scheduled Maintenance</h3>
+                        <div class="announcement-meta">
+                            <span class="announcement-apartment">
+                                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 17V9L10 4L15 9V17H11V12H9V17H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Your Apartment
+                            </span>
+                            <span class="importance-badge high">
+                                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 2L11 7H16L12 10L13 15L10 12L7 15L8 10L4 7H9L10 2Z" fill="currentColor"/>
+                                </svg>
+                                Important
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="announcement-description">
+                    Please be advised that routine maintenance will be conducted on the building's water system next Tuesday, January 23rd, from 9:00 AM to 2:00 PM. Water service will be temporarily unavailable during this time. We apologize for any inconvenience and appreciate your understanding.
+                </p>
+                <div class="announcement-footer">
+                    <div class="announcement-date">
+                        <svg viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>Posted: January 15, 2024</span>
+                    </div>
+                    <div class="read-status unread">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="8" fill="currentColor"/>
+                        </svg>
+                        <span>Unread</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular announcement -->
+            <div class="announcement-card">
+                <div class="announcement-header">
+                    <div>
+                        <h3 class="announcement-title">Rent Payment Reminder</h3>
+                        <div class="announcement-meta">
+                            <span class="announcement-apartment">
+                                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 17V9L10 4L15 9V17H11V12H9V17H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                All Tenants
+                            </span>
+                            <span class="importance-badge normal">
+                                Regular Update
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="announcement-description">
+                    This is a friendly reminder that rent for February is due by the 1st of the month. Please ensure your payment is submitted on time to avoid any late fees. If you have any questions or concerns regarding payment, please don't hesitate to contact the management office. Thank you for your prompt attention to this matter.
+                </p>
+                <div class="announcement-footer">
+                    <div class="announcement-date">
+                        <svg viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>Posted: January 20, 2024</span>
+                    </div>
+                    <button class="mark-read-btn">Mark as Read</button>
+                </div>
+            </div>
+
+            <!-- Read announcement -->
+            <div class="announcement-card">
+                <div class="announcement-header">
+                    <div>
+                        <h3 class="announcement-title">Parking Lot Update</h3>
+                        <div class="announcement-meta">
+                            <span class="announcement-apartment">
+                                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 17V9L10 4L15 9V17H11V12H9V17H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Building B Residents
+                            </span>
+                            <span class="importance-badge normal">
+                                Regular Update
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="announcement-description">
+                    Great news! The parking lot renovation has been completed. All residents now have access to newly marked parking spaces. Please ensure you park only in your designated spot. Guest parking is available in the marked visitor areas. Thank you for your patience during the renovation process.
+                </p>
+                <div class="announcement-footer">
+                    <div class="announcement-date">
+                        <svg viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>Posted: January 22, 2024</span>
+                    </div>
+                    <div class="read-status">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span>Read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another announcement -->
+            <div class="announcement-card">
+                <div class="announcement-header">
+                    <div>
+                        <h3 class="announcement-title">Holiday Office Hours</h3>
+                        <div class="announcement-meta">
+                            <span class="announcement-apartment">
+                                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                                    <path d="M5 17V9L10 4L15 9V17H11V12H9V17H5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                All Tenants
+                            </span>
+                            <span class="importance-badge normal">
+                                Regular Update
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="announcement-description">
+                    Please note that the management office will have reduced hours during the upcoming holiday season. From December 23rd to January 2nd, the office will be open Monday-Friday from 10:00 AM to 2:00 PM. For emergencies, please contact our 24/7 maintenance hotline at (555) 123-4567.
+                </p>
+                <div class="announcement-footer">
+                    <div class="announcement-date">
+                        <svg viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span>Posted: December 15, 2023</span>
+                    </div>
+                    <div class="read-status">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span>Read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty state (hidden by default) -->
+        <div class="empty-state" style="display: none;">
+            <div class="empty-state-icon">📢</div>
+            <p class="empty-state-text">No announcements at this time. Check back later!</p>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Here you would implement actual filtering logic
+                console.log('Filter by:', this.textContent);
+            });
+        });
+
+        // Mark as read functionality
+        document.querySelectorAll('.mark-read-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.announcement-card');
+                const footer = card.querySelector('.announcement-footer');
+                
+                // Replace button with read status
+                this.remove();
+                footer.innerHTML += `
+                    <div class="read-status">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 10L9 12L13 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                        <span>Read</span>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

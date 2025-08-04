@@ -1,44 +1,145 @@
-<div class="tenant-reports">
-  <h1>Twoje Zgłoszenia</h1>
-  
-  <!-- Example reports -->
-  <div class="tenant-report" data-status="in-progress">
-    <h2>Zgłoszenie nr 1</h2>
-    <p>Status: <span class="status in-progress">W trakcie rozpatrywania</span></p>
-    <p>Data zgłoszenia: 01.01.2024</p>
-    <p>Opis: Awaria pralki w łazience</p>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleRent - Moje Zgłoszenia</title>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="page-background"></div>
+    
+    <!-- Floating elements -->
+    <div class="floating-elements">
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+    </div>
 
-  <div class="tenant-report" data-status="completed">
-    <h2>Zgłoszenie nr 2</h2>
-    <p>Status: <span class="status completed">Zakończone</span></p>
-    <p>Data zgłoszenia: 05.01.2024</p>
-    <p>Opis: Wymiana żarówki w kuchni</p>
-  </div>
-  <!-- Add more reports as needed -->
+    <!-- Main container -->
+    <div class="tenant-reports-container">
+        <!-- Page header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <span class="title-accent">Twoje Zgłoszenia</span>
+            </h1>
+            <p class="page-subtitle">Zarządzaj swoimi zgłoszeniami i śledź ich status</p>
+        </div>
 
-  <!-- Add new report form -->
-  <div class="add-report">
-    <h2>Dodaj nowe zgłoszenie</h2>
-    <form id="newReportForm">
-      <div class="form-group">
-        <label for="reportName">Nazwa zgłoszenia</label>
-        <input type="text" id="reportName" placeholder="Nazwa zgłoszenia" required>
-      </div>
-      <div class="form-group">
-        <label for="reportDetails">Szczegóły zgłoszenia</label>
-        <textarea id="reportDetails" placeholder="Szczegóły zgłoszenia" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="urgency">Pilność zgłoszenia</label>
-        <select id="urgency" required>
-          <option value="yellow">Ważne, ale może poczekać</option>
-          <option value="red">Powinno być rozwiązane teraz</option>
-          <option value="green">Może poczekać</option>
-        </select>
-      </div>
-      <button type="submit">Zgłoś</button>
-    </form>
-  </div>
-  
-</div>
+        <!-- Stats cards -->
+        <div class="stats-row">
+            <div class="stat-card in-progress">
+                <div class="stat-number">1</div>
+                <div class="stat-label">W trakcie rozpatrywania</div>
+            </div>
+            <div class="stat-card completed">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Zakończone</div>
+            </div>
+            <div class="stat-card total">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Wszystkie zgłoszenia</div>
+            </div>
+        </div>
+
+        <!-- Report list -->
+        <div class="report-list">
+            <!-- In-progress report -->
+            <div class="report-item" data-status="in-progress">
+                <div class="report-icon">
+                    <span class="icon-clock"></span>
+                </div>
+                <div class="report-content">
+                    <h2 class="report-title">Zgłoszenie nr 1</h2>
+                    <p class="report-description">Awaria pralki w łazience</p>
+                    <div class="report-meta">
+                        <div class="meta-item">
+                            <span class="status-badge in-progress">W trakcie rozpatrywania</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="icon-calendar"></span>
+                            <span>Data zgłoszenia: 01.01.2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed report -->
+            <div class="report-item" data-status="completed">
+                <div class="report-icon">
+                    <span class="icon-check"></span>
+                </div>
+                <div class="report-content">
+                    <h2 class="report-title">Zgłoszenie nr 2</h2>
+                    <p class="report-description">Wymiana żarówki w kuchni</p>
+                    <div class="report-meta">
+                        <div class="meta-item">
+                            <span class="status-badge completed">Zakończone</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="icon-calendar"></span>
+                            <span>Data zgłoszenia: 05.01.2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add new report form -->
+        <div class="add-report-section">
+            <h2 class="section-header">Dodaj nowe zgłoszenie</h2>
+            <form class="report-form" id="newReportForm">
+                <div class="form-group">
+                    <label class="form-label" for="reportName">Nazwa zgłoszenia</label>
+                    <input type="text" id="reportName" class="form-input" placeholder="np. Awaria ogrzewania" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="reportDetails">Szczegóły zgłoszenia</label>
+                    <textarea id="reportDetails" class="form-textarea" placeholder="Opisz dokładnie problem..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="urgency">Pilność zgłoszenia</label>
+                    <select id="urgency" class="form-select urgency-select" required>
+                        <option value="yellow">
+                            <span class="urgency-indicator" style="background-color: #f093fb;"></span>
+                            Ważne, ale może poczekać
+                        </option>
+                        <option value="red">
+                            <span class="urgency-indicator" style="background-color: #f5576c;"></span>
+                            Powinno być rozwiązane teraz
+                        </option>
+                        <option value="green">
+                            <span class="urgency-indicator" style="background-color: #4ade80;"></span>
+                            Może poczekać
+                        </option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button">Wyślij zgłoszenie</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('newReportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your backend
+            const formData = {
+                name: document.getElementById('reportName').value,
+                details: document.getElementById('reportDetails').value,
+                urgency: document.getElementById('urgency').value
+            };
+            
+            console.log('Form submitted:', formData);
+            alert('Zgłoszenie zostało wysłane!');
+            
+            // Clear form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
