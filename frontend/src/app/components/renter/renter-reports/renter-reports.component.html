@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SimpleRent - Moje Zgłoszenia</title>
+    <title>SimpleRent - My Reports</title>
 </head>
 <body>
     <!-- Animated background -->
@@ -21,24 +21,24 @@
         <!-- Page header -->
         <div class="page-header">
             <h1 class="page-title">
-                <span class="title-accent">Twoje Zgłoszenia</span>
+                <span class="title-accent">Your Reports</span>
             </h1>
-            <p class="page-subtitle">Zarządzaj swoimi zgłoszeniami i śledź ich status</p>
+            <p class="page-subtitle">Manage your reports and track their status</p>
         </div>
 
         <!-- Stats cards -->
         <div class="stats-row">
             <div class="stat-card in-progress">
                 <div class="stat-number">1</div>
-                <div class="stat-label">W trakcie rozpatrywania</div>
+                <div class="stat-label">In progress</div>
             </div>
             <div class="stat-card completed">
                 <div class="stat-number">1</div>
-                <div class="stat-label">Zakończone</div>
+                <div class="stat-label">Completed</div>
             </div>
             <div class="stat-card total">
                 <div class="stat-number">2</div>
-                <div class="stat-label">Wszystkie zgłoszenia</div>
+                <div class="stat-label">All reports</div>
             </div>
         </div>
 
@@ -50,15 +50,15 @@
                     <span class="icon-clock"></span>
                 </div>
                 <div class="report-content">
-                    <h2 class="report-title">Zgłoszenie nr 1</h2>
-                    <p class="report-description">Awaria pralki w łazience</p>
+                    <h2 class="report-title">Report #1</h2>
+                    <p class="report-description">Washing machine malfunction in bathroom</p>
                     <div class="report-meta">
                         <div class="meta-item">
-                            <span class="status-badge in-progress">W trakcie rozpatrywania</span>
+                            <span class="status-badge in-progress">In progress</span>
                         </div>
                         <div class="meta-item">
                             <span class="icon-calendar"></span>
-                            <span>Data zgłoszenia: 01.01.2024</span>
+                            <span>Report date: 01.01.2024</span>
                         </div>
                     </div>
                 </div>
@@ -70,15 +70,15 @@
                     <span class="icon-check"></span>
                 </div>
                 <div class="report-content">
-                    <h2 class="report-title">Zgłoszenie nr 2</h2>
-                    <p class="report-description">Wymiana żarówki w kuchni</p>
+                    <h2 class="report-title">Report #2</h2>
+                    <p class="report-description">Light bulb replacement in kitchen</p>
                     <div class="report-meta">
                         <div class="meta-item">
-                            <span class="status-badge completed">Zakończone</span>
+                            <span class="status-badge completed">Completed</span>
                         </div>
                         <div class="meta-item">
                             <span class="icon-calendar"></span>
-                            <span>Data zgłoszenia: 05.01.2024</span>
+                            <span>Report date: 05.01.2024</span>
                         </div>
                     </div>
                 </div>
@@ -87,37 +87,37 @@
 
         <!-- Add new report form -->
         <div class="add-report-section">
-            <h2 class="section-header">Dodaj nowe zgłoszenie</h2>
+            <h2 class="section-header">Add new report</h2>
             <form class="report-form" id="newReportForm">
                 <div class="form-group">
-                    <label class="form-label" for="reportName">Nazwa zgłoszenia</label>
-                    <input type="text" id="reportName" class="form-input" placeholder="np. Awaria ogrzewania" required>
+                    <label class="form-label" for="reportName">Report name</label>
+                    <input type="text" id="reportName" class="form-input" placeholder="e.g. Heating malfunction" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="reportDetails">Szczegóły zgłoszenia</label>
-                    <textarea id="reportDetails" class="form-textarea" placeholder="Opisz dokładnie problem..." required></textarea>
+                    <label class="form-label" for="reportDetails">Report details</label>
+                    <textarea id="reportDetails" class="form-textarea" placeholder="Describe the problem in detail..." required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="urgency">Pilność zgłoszenia</label>
+                    <label class="form-label" for="urgency">Report urgency</label>
                     <select id="urgency" class="form-select urgency-select" required>
                         <option value="yellow">
                             <span class="urgency-indicator" style="background-color: #f093fb;"></span>
-                            Ważne, ale może poczekać
+                            Important, but can wait
                         </option>
                         <option value="red">
                             <span class="urgency-indicator" style="background-color: #f5576c;"></span>
-                            Powinno być rozwiązane teraz
+                            Should be resolved now
                         </option>
                         <option value="green">
                             <span class="urgency-indicator" style="background-color: #4ade80;"></span>
-                            Może poczekać
+                            Can wait
                         </option>
                     </select>
                 </div>
                 
-                <button type="submit" class="submit-button">Wyślij zgłoszenie</button>
+                <button type="submit" class="submit-button">Submit report</button>
             </form>
         </div>
     </div>
@@ -135,7 +135,7 @@
             };
             
             console.log('Form submitted:', formData);
-            alert('Zgłoszenie zostało wysłane!');
+            alert('Report has been submitted!');
             
             // Clear form
             this.reset();
