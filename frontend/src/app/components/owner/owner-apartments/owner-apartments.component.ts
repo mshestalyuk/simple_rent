@@ -115,10 +115,8 @@ export class OwnerApartmentsComponent implements OnInit {
   }
 
   deleteApartment(event: Event, apartmentId: number): void {
-    // Stop event propagation to prevent card click
     event.stopPropagation();
     
-    // Optional: Add confirmation dialog here
     if (!confirm('Are you sure you want to delete this apartment?')) {
       return;
     }
@@ -132,8 +130,6 @@ export class OwnerApartmentsComponent implements OnInit {
         // Remove the apartment from the local array for immediate UI update
         this.apartments = this.apartments.filter(apt => apt.id !== apartmentId);
         
-        // Optionally refresh the entire list from server
-        // this.getApartments();
       },
       (error) => {
         console.error('Error deleting apartment:', error);

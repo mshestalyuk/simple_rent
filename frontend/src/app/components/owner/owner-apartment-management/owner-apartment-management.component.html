@@ -1,222 +1,282 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SimpleRent - Apartment Management</title>
- 
-</head>
-<body>
-    <!-- Animated background -->
-    <div class="page-background"></div>
+<!-- owner-apartment-management.component.html -->
+<div class="apartment-management-container">
+  <!-- Animated background -->
+  <div class="page-background"></div>
+  
+  <!-- Floating elements -->
+  <div class="floating-elements">
+    <div class="float-element"></div>
+  </div>
+
+  <!-- Page header -->
+  <div class="page-header">
+    <h1 class="page-title">
+      <span class="title-accent">Apartment Details</span>
+    </h1>
+  </div>
+
+  <!-- Apartment Details Section -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Property Information</h2>
+      <button class="btn btn-primary" (click)="showUpdateApartment()">
+        {{ updateApartmentDiv ? 'Cancel' : 'Update Apartment' }}
+      </button>
+    </div>
     
-    <!-- Floating elements -->
-    <div class="floating-elements">
-        <div class="float-element"></div>
+    <!-- Display Mode -->
+    <div class="apartment-display-details" *ngIf="!updateApartmentDiv">
+      <div class="detail-row">
+        <span class="detail-label">ID:</span>
+        <span>{{ apartmentDetails.id || 'N/A' }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Address:</span>
+        <span>{{ apartmentDetails.address || 'Not specified' }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Details:</span>
+        <span>{{ apartmentDetails.note || 'No additional details' }}</span>
+      </div>
     </div>
 
-    <!-- Main container -->
-    <div class="apartment-management-container">
-        <!-- Page header -->
-        <div class="page-header">
-            <h1 class="page-title">
-                <span class="title-accent">Apartment Details</span>
-            </h1>
+    <!-- Update Form -->
+    <div *ngIf="updateApartmentDiv">
+      <form (ngSubmit)="updateApartment()">
+        <div class="form-group">
+          <label for="apartmentId">ID:</label>
+          <input type="text" id="apartmentId" [(ngModel)]="apartmentDetails.id" name="id" disabled>
         </div>
-
-        <!-- Apartment Details Section -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">Property Information</h2>
-                <button class="btn btn-primary" onclick="toggleUpdateForm()">Update Apartment</button>
-            </div>
-            
-            <div class="apartment-display-details">
-                <div class="detail-row">
-                    <span class="detail-label">ID:</span>
-                    <span>APT-001</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Address:</span>
-                    <span>123 Main Street, City Center</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Details:</span>
-                    <span>2 bedroom apartment, recently renovated with modern kitchen</span>
-                </div>
-            </div>
-
-            <!-- Update Form (hidden by default) -->
-            <div id="updateForm" style="display: none;">
-                <form>
-                    <div class="form-group">
-                        <label for="id">ID:</label>
-                        <input type="text" id="id" value="APT-001" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" value="123 Main Street, City Center">
-                    </div>
-                    <div class="form-group">
-                        <label for="note">Property Details:</label>
-                        <textarea id="note">2 bedroom apartment, recently renovated with modern kitchen</textarea>
-                    </div>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-primary">Save Changes</button>
-                        <button type="button" class="btn btn-secondary" onclick="toggleUpdateForm()">Cancel</button>
-                    </div>
-                </form>
-            </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" id="address" [(ngModel)]="apartmentDetails.address" name="address" required>
         </div>
-
-        <!-- Rent Contracts Section -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">Rental Contracts</h2>
-            </div>
-            
-            <div class="contracts-grid">
-                <div class="contract-item">
-                    <span class="contract-info">Contract #1</span>
-                    <button class="btn btn-secondary" onclick="showContractDetails(1)">Show Details</button>
-                </div>
-                <div class="contract-item">
-                    <span class="contract-info">Contract #2</span>
-                    <button class="btn btn-secondary" onclick="showContractDetails(2)">Show Details</button>
-                </div>
-            </div>
-
-            <!-- Contract Details (hidden by default) -->
-            <div id="contractDetails1" class="contract-details" style="display: none;">
-                <h3>Contract #1</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="conclusionDate1">Contract Start Date:</label>
-                        <input type="date" id="conclusionDate1" value="2024-01-01" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="expiresDate1">Contract End Date:</label>
-                        <input type="date" id="expiresDate1" value="2025-01-01">
-                    </div>
-                    <div class="form-group">
-                        <label for="monthPayment1">Monthly Payment:</label>
-                        <input type="number" id="monthPayment1" value="1500" placeholder="Amount in USD">
-                    </div>
-                    <div class="form-group">
-                        <label for="contractNote1">Notes:</label>
-                        <textarea id="contractNote1">First floor apartment, includes parking space</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="photoLinks1">Photo Links:</label>
-                        <input type="text" id="photoLinks1" placeholder="Enter photo URL">
-                    </div>
-                    <div class="form-group">
-                        <label for="documentLink1">Document Link:</label>
-                        <input type="text" id="documentLink1" placeholder="Enter document URL">
-                    </div>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-primary">Update Contract</button>
-                        <button type="button" class="btn btn-danger">Delete Contract</button>
-                        <button type="button" class="btn btn-secondary" onclick="hideContractDetails(1)">Close</button>
-                    </div>
-                </form>
-
-                <!-- Tenants for this contract -->
-                <div class="section-header" style="margin-top: 2rem;">
-                    <h3 class="section-title">Tenants</h3>
-                </div>
-                <div class="tenants-list">
-                    <div class="tenant-item">
-                        <div class="tenant-info">
-                            <div class="tenant-info-row">
-                                <strong>Name:</strong> John Smith
-                            </div>
-                            <div class="tenant-info-row">
-                                <strong>Email:</strong> john.smith@email.com
-                            </div>
-                            <div class="tenant-info-row">
-                                <strong>Phone:</strong> +1 234 567 8900
-                            </div>
-                        </div>
-                        <button class="btn btn-danger">Remove Tenant</button>
-                    </div>
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="note">Property Details:</label>
+          <textarea id="note" [(ngModel)]="apartmentDetails.note" name="note"></textarea>
         </div>
-
-        <!-- Add New Tenant Section -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">Add New Tenant</h2>
-            </div>
-            
-            <form>
-                <div class="form-group">
-                    <label for="newTenantName">First Name:</label>
-                    <input type="text" id="newTenantName" placeholder="Enter first name">
-                </div>
-                <div class="form-group">
-                    <label for="newTenantSurname">Last Name:</label>
-                    <input type="text" id="newTenantSurname" placeholder="Enter last name">
-                </div>
-                <div class="form-group">
-                    <label for="newTenantEmail">Email:</label>
-                    <input type="email" id="newTenantEmail" placeholder="Enter email address">
-                </div>
-                <div class="form-group">
-                    <label for="newTenantPhone">Phone Number:</label>
-                    <input type="tel" id="newTenantPhone" placeholder="Enter phone number">
-                </div>
-                
-                <div class="checkbox-group">
-                    <input type="checkbox" id="addNewContract" onchange="toggleContractSection()">
-                    <label for="addNewContract">Create new rental contract?</label>
-                </div>
-
-                <!-- New Contract Section (hidden by default) -->
-                <div id="newContractSection" style="display: none;">
-                    <h3 style="margin-bottom: 1rem; color: #2F575B;">New Contract Details</h3>
-                    <div class="form-group">
-                        <label for="newConclusionDate">Contract Start Date:</label>
-                        <input type="date" id="newConclusionDate">
-                    </div>
-                    <div class="form-group">
-                        <label for="newExpiresDate">Contract End Date:</label>
-                        <input type="date" id="newExpiresDate">
-                    </div>
-                    <div class="form-group">
-                        <label for="newMonthPayment">Monthly Payment:</label>
-                        <input type="number" id="newMonthPayment" placeholder="Amount in USD">
-                    </div>
-                    <div class="form-group">
-                        <label for="newNote">Notes:</label>
-                        <textarea id="newNote" placeholder="Add any contract notes"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="newDocumentLink">Document Link:</label>
-                        <input type="text" id="newDocumentLink" placeholder="Enter document URL">
-                    </div>
-                    <div class="form-group">
-                        <label for="newPhotoLinks">Photo Links:</label>
-                        <input type="text" id="newPhotoLinks" placeholder="Enter photo URLs">
-                    </div>
-                    <button type="button" class="btn btn-primary">Create Contract & Add Tenant</button>
-                </div>
-
-                <!-- Existing Contract Section -->
-                <div id="existingContractSection">
-                    <div class="form-group">
-                        <label for="existingContracts">Select Existing Contract:</label>
-                        <select id="existingContracts">
-                            <option value="">Choose a contract...</option>
-                            <option value="1">Contract #1 - John Smith</option>
-                            <option value="2">Contract #2 - Sarah Johnson</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-primary">Add Tenant to Contract</button>
-                </div>
-            </form>
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" (click)="showUpdateApartment()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="deleteApartment()">Delete Apartment</button>
         </div>
+      </form>
     </div>
-</body>
-</html>
+  </div>
+
+  <!-- Rent Contracts Section -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Rental Contracts</h2>
+    </div>
+    
+    <div class="contracts-grid">
+      <div class="contract-item" *ngFor="let contract of rentContracts.content; let i = index">
+        <span class="contract-info">Contract #{{ contract.id }}</span>
+        <button class="btn btn-secondary" (click)="showRentContractDetails(i)">
+          {{ showRentContract === i ? 'Hide' : 'Show' }} Details
+        </button>
+      </div>
+    </div>
+
+    <!-- Contract Details -->
+    <div *ngFor="let contract of rentContracts.content; let i = index">
+      <div class="contract-details" *ngIf="showRentContract === i">
+        <h3>Contract #{{ contract.id }}</h3>
+        <form>
+          <div class="form-group">
+            <label for="conclusionDate{{i}}">Contract Start Date:</label>
+            <input type="date" id="conclusionDate{{i}}" 
+                   [(ngModel)]="contract.conclusionDate" 
+                   name="conclusionDate{{i}}">
+          </div>
+          <div class="form-group">
+            <label for="expiresDate{{i}}">Contract End Date:</label>
+            <input type="date" id="expiresDate{{i}}" 
+                   [(ngModel)]="contract.expiresDate" 
+                   name="expiresDate{{i}}">
+          </div>
+          <div class="form-group">
+            <label for="monthPayment{{i}}">Monthly Payment:</label>
+            <input type="number" id="monthPayment{{i}}" 
+                   [(ngModel)]="contract.monthPayment" 
+                   name="monthPayment{{i}}"
+                   placeholder="Amount">
+          </div>
+          <div class="form-group">
+            <label for="contractNote{{i}}">Notes:</label>
+            <textarea id="contractNote{{i}}" 
+                      [(ngModel)]="contract.note" 
+                      name="contractNote{{i}}"></textarea>
+          </div>
+          
+          <!-- Document Upload -->
+          <div class="form-group">
+            <label for="document{{i}}">Upload Document:</label>
+            <input type="file" id="document{{i}}" (change)="onFileSelected($event)">
+            <button type="button" class="btn btn-secondary" 
+                    (click)="uploadDocument(contract.id)"
+                    [disabled]="!selectedFile">
+              Upload
+            </button>
+            <button type="button" class="btn btn-secondary" 
+                    (click)="downloadDocument(contract.id)">
+              Download Document
+            </button>
+          </div>
+          
+          <div class="button-group">
+            <button type="button" class="btn btn-primary" (click)="updateRentContract()">
+              Update Contract
+            </button>
+            <button type="button" class="btn btn-danger" (click)="deleteRentContract()">
+              Delete Contract
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="showRentContract = -1">
+              Close
+            </button>
+          </div>
+        </form>
+
+        <!-- Tenants for this contract -->
+        <div class="section-header" style="margin-top: 2rem;">
+          <h3 class="section-title">Tenants</h3>
+        </div>
+        <div class="tenants-list">
+          <div class="tenant-item" *ngFor="let tenant of tenants.content">
+            <div class="tenant-info">
+              <div class="tenant-info-row">
+                <strong>Name:</strong> 
+                <input type="text" [(ngModel)]="tenant.name" 
+                       style="width: auto; padding: 0.3rem;">
+              </div>
+              <div class="tenant-info-row">
+                <strong>Surname:</strong> 
+                <input type="text" [(ngModel)]="tenant.surname" 
+                       style="width: auto; padding: 0.3rem;">
+              </div>
+              <div class="tenant-info-row">
+                <strong>Email:</strong> 
+                <input type="email" [(ngModel)]="tenant.email" 
+                       style="width: auto; padding: 0.3rem;">
+              </div>
+              <div class="tenant-info-row">
+                <strong>Phone:</strong> 
+                <input type="tel" [(ngModel)]="tenant.phoneNumber" 
+                       style="width: auto; padding: 0.3rem;">
+              </div>
+            </div>
+            <div class="button-group">
+              <button class="btn btn-primary" (click)="updateTenantDetails(tenant)">
+                Update
+              </button>
+              <button class="btn btn-danger" (click)="deleteTenantDetails(contract.id, tenant.id)">
+                Remove Tenant
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Tenant Section -->
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Add New Tenant</h2>
+    </div>
+    
+    <form>
+      <div class="form-group">
+        <label for="newTenantName">First Name:</label>
+        <input type="text" id="newTenantName" 
+               [(ngModel)]="newTenantDetails.name" 
+               name="newTenantName"
+               placeholder="Enter first name">
+      </div>
+      <div class="form-group">
+        <label for="newTenantSurname">Last Name:</label>
+        <input type="text" id="newTenantSurname" 
+               [(ngModel)]="newTenantDetails.surname" 
+               name="newTenantSurname"
+               placeholder="Enter last name">
+      </div>
+      <div class="form-group">
+        <label for="newTenantEmail">Email:</label>
+        <input type="email" id="newTenantEmail" 
+               [(ngModel)]="newTenantDetails.email" 
+               name="newTenantEmail"
+               placeholder="Enter email address">
+      </div>
+      <div class="form-group">
+        <label for="newTenantPhone">Phone Number:</label>
+        <input type="tel" id="newTenantPhone" 
+               [(ngModel)]="newTenantDetails.phoneNumber" 
+               name="newTenantPhone"
+               placeholder="Enter phone number">
+      </div>
+      
+      <div class="checkbox-group">
+        <input type="checkbox" id="addNewContract" 
+               [(ngModel)]="addingNewContract" 
+               name="addNewContract">
+        <label for="addNewContract">Create new rental contract?</label>
+      </div>
+
+      <!-- New Contract Section -->
+      <div *ngIf="addingNewContract">
+        <h3 style="margin-bottom: 1rem; color: #2F575B;">New Contract Details</h3>
+        <div class="form-group">
+          <label for="newConclusionDate">Contract Start Date:</label>
+          <input type="date" id="newConclusionDate" 
+                 [(ngModel)]="newRentContractDetails.conclusionDate" 
+                 name="newConclusionDate">
+        </div>
+        <div class="form-group">
+          <label for="newExpiresDate">Contract End Date:</label>
+          <input type="date" id="newExpiresDate" 
+                 [(ngModel)]="newRentContractDetails.expiresDate" 
+                 name="newExpiresDate">
+        </div>
+        <div class="form-group">
+          <label for="newMonthPayment">Monthly Payment:</label>
+          <input type="number" id="newMonthPayment" 
+                 [(ngModel)]="newRentContractDetails.monthPayment" 
+                 name="newMonthPayment"
+                 placeholder="Amount">
+        </div>
+        <div class="form-group">
+          <label for="newNote">Notes:</label>
+          <textarea id="newNote" 
+                    [(ngModel)]="newRentContractDetails.note" 
+                    name="newNote"
+                    placeholder="Add any contract notes"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addNewTenant()">
+          Create Contract & Add Tenant
+        </button>
+      </div>
+
+      <!-- Existing Contract Section -->
+      <div *ngIf="!addingNewContract">
+        <div class="form-group">
+          <label for="existingContracts">Select Existing Contract:</label>
+          <select id="existingContracts" 
+                  [(ngModel)]="selectedContractId" 
+                  name="existingContracts">
+            <option value="-1">Choose a contract...</option>
+            <option *ngFor="let contract of rentContracts.content" 
+                    [value]="contract.id">
+              Contract #{{ contract.id }} - {{ contract.note || 'No description' }}
+            </option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" 
+                (click)="addNewTenantToContract()"
+                [disabled]="selectedContractId === -1">
+          Add Tenant to Contract
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
