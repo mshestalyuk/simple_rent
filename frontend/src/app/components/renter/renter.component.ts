@@ -18,4 +18,9 @@ export class RenterComponent {
     this.router.navigate(["/login"]);
     this.msgService.add({ severity: 'success', summary: 'Wylogowano', detail: 'Do zobaczenia' });
   }
+  
+  toggleMobileMenu() {
+    // Add mobile menu toggle logic
+    console.log('Toggling mobile menu');
+  }
 }

@@ -1,281 +1,533 @@
 /* owner-apartment-management.component.css */
 
-/* Kontener zarządzania mieszkaniem */
-.apartment-management-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Sekcja wyświetlania szczegółów mieszkania */
-.apartment-display-details {
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.apartment-display-details p {
-  margin: 5px 0;
-}
-
-/* Sekcja aktualizacji szczegółów mieszkania */
-.apartment-details, .contract-item-big{
-  margin-bottom: 20px;
-  background-color: #ffe5c9;
-  padding: 50px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-
-}
-
-/* Etykieta */
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-/* Pola wejściowe */
-input,
-textarea {
-  width: calc(100% - 16px);
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Przyciski */
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-/* Kontener przycisków */
-.button-container {
-  text-align: right;
-}
-
-/* Nagłówek sekcji */
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-  .apartment-management-container {
-    max-width: 100%;
-    padding: 10px;
-  }
-}
-
-/* Sekcja umów najmu */
-.rent-contracts {
-  margin-bottom: 20px;
-}
-
-/* Lista umów najmu */
-.rent-contracts ul {
-  list-style-type: none;
+/* Reset and base styles */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Element listy umów najmu */
-.rent-contracts li {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
+/* Animated background gradient */
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  opacity: 0.05;
+  z-index: -2;
 }
 
-/* Stylizacja checkboxa */
-.add-tenant label.checkbox-label {
-  display: flex;
-  align-items: left;
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.add-tenant input[type="checkbox"] {
-  margin-right: 8px;
+/* Floating elements */
+.floating-elements {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-/* Dodanie stylizacji dla opcji Tak/Nie */
-.add-tenant label.radio-label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.add-tenant input[type="radio"] {
-  margin-right: 8px;
-}
-
-/* Kolorowa stylizacja dla opcji Tak/Nie */
-.add-tenant input[type="radio"] + span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #4caf50; /* Kolor zielony */
+.float-element {
+  position: absolute;
   border-radius: 50%;
-  margin-right: 5px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0.03;
+  animation: float 20s infinite ease-in-out;
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* Main container */
+.apartment-management-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 5% 50px;
+  animation: fadeIn 0.8s ease;
+  min-height: 100vh;
   position: relative;
 }
 
-.add-tenant input[type="radio"]:checked + span::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: #4caf50; /* Kolor zielony */
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.add-tenant input[type="radio"] + span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  border: 2px solid #4caf50; /* Kolor zielony */
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
+/* Page header */
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.add-tenant input[type="radio"]:checked + span::before {
-  opacity: 0;
+.page-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #2F575B;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
-
-/* Przyciski w sekcji umów najmu */
-.rent-contracts button {
-  background-color: #2196F3;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.title-accent {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.rent-contracts button:hover {
-  background-color: #0b7dda;
+/* Sections */
+.section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-/* Sekcja dodawania lokatora */
-.add-tenant {
-  margin-bottom: 20px;
+.section:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
-/* Etykieta w sekcji dodawania lokatora */
-.add-tenant label {
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #2F575B;
+  font-weight: 700;
+}
+
+/* Apartment details display */
+.apartment-display-details {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  color: #666;
+  padding: 0.5rem 0;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 100px;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
 }
 
-/* Pole wyboru w sekcji dodawania lokatora */
-.add-tenant input[type="checkbox"] {
-  margin-bottom: 10px;
-}
-
-/* Dodatkowe style dla przycisków w sekcji dodawania lokatora */
-.add-tenant .button-container button {
-  background-color: #2196F3;
-}
-
-.add-tenant .button-container button:hover {
-  background-color: #0b7dda;
-}
-
-/* Sekcja informacji o lokatorze */
-.tenant-details {
-  margin-bottom: 20px;
-}
-
-/* Lista lokatorów */
-.tenant-details ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Element listy lokatorów */
-.tenant-details li {
-  margin-bottom: 10px;
-}
-
-/* Dodatkowe style dla przycisków w sekcji informacji o lokatorze */
-.tenant-details .button-container button {
-  background-color: #ff9800;
-}
-
-.tenant-details .button-container button:hover {
-  background-color: #e68a00;
-}
-/* Dodatkowe style dla elementu select */
-/* Stylizacja dla etykiety select */
-.add-tenant label {
-  display: block;
-  margin-bottom: 8px; /* Lekki margines nad etykietą */
-  font-weight: bold;
-}
-
-/* Stylizacja dla elementu select */
-.add-tenant select {
+.form-group input,
+.form-group textarea,
+.form-group select {
   width: 100%;
-  padding: 12px; /* Zwiększony padding */
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-  color: #333;
-  appearance: none; /* Resetowanie domyślnego wyglądu dla niektórych przeglądarek */
-  cursor: pointer;
-  font-size: 16px; /* Zwiększony rozmiar tekstu */
+  padding: 0.8rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  font-family: inherit;
 }
 
-.add-tenant select:hover {
-  border-color: #888;
-}
-
-.add-tenant select:focus {
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
-  border-color: #4caf50; /* Kolor zielony przy aktywnym elemencie */
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Stylizacja dla opcji w rozwijanej liście */
-.add-tenant select option {
-  padding: 12px; /* Zwiększony padding */
-  background-color: #fff;
+.form-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input[type="file"] {
+  padding: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #666;
+  border: 2px solid #e9ecef;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Contracts list */
+.contracts-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contract-item {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.contract-item:hover {
+  border-color: #667eea;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.contract-info {
+  font-weight: 600;
   color: #333;
-  font-size: 16px; /* Zwiększony rozmiar tekstu */
+  font-size: 1.1rem;
 }
 
-.add-tenant select option:hover {
-  background-color: #ddd;
+/* Contract details */
+.contract-details {
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe0b2 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+  animation: slideDown 0.3s ease;
 }
 
-.add-tenant select option:checked {
-  background-color: #4caf50; /* Kolor zielony dla zaznaczonej opcji */
-  color: #fff;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contract-details h3 {
+  color: #2F575B;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+}
+
+/* Tenants list */
+.tenants-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tenant-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.tenant-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.tenant-info {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.tenant-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+}
+
+.tenant-info-row strong {
+  min-width: 80px;
+  color: #333;
+}
+
+.tenant-info-row input {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Checkbox and radio styles */
+.checkbox-group,
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox-group input[type="checkbox"],
+.radio-group input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-group label,
+.radio-group label {
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Loading and empty states */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.alert {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .apartment-management-container {
+    padding: 80px 3% 30px;
+  }
+
+  .section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .contract-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .tenant-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tenant-info-row strong {
+    min-width: auto;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .apartment-management-container {
+    padding: 60px 2% 20px;
+  }
+
+  .section {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .page-background,
+  .floating-elements,
+  .btn,
+  .button-group {
+    display: none;
+  }
+
+  .section {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .apartment-management-container {
+    padding: 0;
+  }
 }

@@ -1,1 +1,249 @@
-<p>owner-account works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleRent - My Account</title>
+
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="page-background"></div>
+    
+    <!-- Floating elements -->
+    <div class="floating-elements">
+        <div class="float-element"></div>
+        <div class="float-element"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="account-container">
+        <!-- Page header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <span class="title-accent">My Account</span>
+            </h1>
+        </div>
+
+        <!-- Profile section -->
+        <div class="profile-section">
+            <div class="profile-avatar">
+                <svg viewBox="0 0 60 60" fill="none">
+                    <circle cx="30" cy="20" r="10" stroke="currentColor" stroke-width="3"/>
+                    <path d="M10 50C10 40 20 30 30 30C40 30 50 40 50 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h2 class="profile-name">John Anderson</h2>
+            <p class="profile-email">john.anderson@email.com</p>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Properties</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">28</div>
+                    <div class="stat-label">Tenants</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Years Active</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Occupancy Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content grid -->
+        <div class="content-grid">
+            <!-- Personal Information -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 20C4 16 8 12 12 12C16 12 20 16 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="section-title">Personal Information</h3>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" value="John">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" value="Anderson">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" value="john.anderson@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" value="+1 234 567 8900">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" value="Anderson Properties LLC">
+                    </div>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 11V7C7 4.239 9.239 2 12 2C14.761 2 17 4.239 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="section-title">Security Settings</h3>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary">Update Password</button>
+                        <button type="button" class="btn btn-secondary">Enable 2FA</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preferences -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 15C13.657 15 15 13.657 15 12C15 10.343 13.657 9 12 9C10.343 9 9 10.343 9 12C9 13.657 10.343 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M19.4 15C19.2 15.4 19.2 16 19.4 16.4L20.8 19C21 19.4 20.8 19.9 20.4 20.1L18 21.5C17.6 21.7 17.1 21.5 16.9 21.1L15.5 18.5C15.3 18.1 14.8 17.9 14.4 17.9H9.6C9.2 17.9 8.7 18.1 8.5 18.5L7.1 21.1C6.9 21.5 6.4 21.7 6 21.5L3.6 20.1C3.2 19.9 3 19.4 3.2 19L4.6 16.4C4.8 16 4.8 15.4 4.6 15L3.2 12.4C3 12 3.2 11.5 3.6 11.3L6 9.9C6.4 9.7 6.9 9.9 7.1 10.3L8.5 12.9C8.7 13.3 9.2 13.5 9.6 13.5H14.4C14.8 13.5 15.3 13.3 15.5 12.9L16.9 10.3C17.1 9.9 17.6 9.7 18 9.9L20.4 11.3C20.8 11.5 21 12 20.8 12.4L19.4 15Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="section-title">Preferences</h3>
+                </div>
+                <div class="settings-list">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-name">Email Notifications</div>
+                            <div class="setting-description">Receive updates about your properties</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-name">SMS Alerts</div>
+                            <div class="setting-description">Get urgent notifications via text</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-name">Monthly Reports</div>
+                            <div class="setting-description">Receive detailed property reports</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label for="language">Language</label>
+                    <select id="language">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timezone">Timezone</label>
+                    <select id="timezone">
+                        <option value="est" selected>Eastern Time (EST)</option>
+                        <option value="cst">Central Time (CST)</option>
+                        <option value="mst">Mountain Time (MST)</option>
+                        <option value="pst">Pacific Time (PST)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="section-title">Recent Activity</h3>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2V10L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Password updated</div>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10H15M10 5V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New property added</div>
+                            <div class="activity-time">Yesterday at 3:45 PM</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M3 17V16C3 13.2 5.2 11 8 11H12C14.8 11 17 13.2 17 16V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New tenant registered</div>
+                            <div class="activity-time">3 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="section-card" style="margin-top: 2rem; border: 2px solid #ff6b6b;">
+            <div class="section-header">
+                <div class="section-icon" style="background: #ff6b6b;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9V13M12 17H12.01M4.93 4.93L19.07 19.07M19.07 4.93L4.93 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="section-title" style="color: #ff6b6b;">Danger Zone</h3>
+            </div>
+            <p style="color: #666; margin-bottom: 1.5rem;">
+                Once you delete your account, there is no going back. Please be certain.
+            </p>
+            <button class="btn btn-danger">Delete Account</button>
+        </div>
+    </div>
+</body>
+</html>

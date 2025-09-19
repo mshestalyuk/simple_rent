@@ -1,29 +1,242 @@
 <!-- owner-apartments.component.html -->
-<div class="apartments">
-  <div *ngIf="!apartments.empty; else noApartments">
-    <h1>Twoje mieszkania</h1>
-    <div *ngFor="let apartment of apartments.content" class="apartment" (click)="onApartmentClick(apartment.id)">
-      <h2>Mieszkanie</h2>
-      <p>Adresa: {{ apartment.address }}</p>
-      <p>Informacje: {{ apartment.note }}</p>
-      <button (click)="deleteApartment($event, apartment.id)">Usuń mieszkanie</button>
+<div class="apartments-page">
+  <!-- Animated gradient background -->
+  <div class="animated-bg">
+    <div class="gradient-sphere"></div>
+    <div class="gradient-sphere"></div>
+    <div class="gradient-sphere"></div>
+  </div>
+
+  <!-- Floating decorative elements -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- Page header with animation -->
+    <header class="page-header">
+      <div class="header-content">
+        <h1 class="title">
+          <span class="title-main">Your Properties</span>
+          <span class="title-sub">Manage your rental apartments</span>
+        </h1>
+        <div class="header-stats" *ngIf="apartments.length > 0">
+          <div class="stat-card">
+            <span class="stat-number">{{ apartments.length }}</span>
+            <span class="stat-label">Total Properties</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Apartments grid -->
+    <section class="apartments-section" *ngIf="apartments.length > 0">
+      <div class="apartments-grid">
+        <div 
+          class="apartment-card" 
+          *ngFor="let apartment of apartments; let i = index"
+          [style.animation-delay]="i * 0.1 + 's'"
+          (click)="onApartmentClick(apartment.id)"
+        >
+          <!-- Delete button -->
+          <button 
+            class="delete-btn" 
+            (click)="deleteApartment($event, apartment.id)"
+            title="Delete apartment"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14zM10 11v6M14 11v6" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Card glow effect -->
+          <div class="card-glow"></div>
+
+          <!-- Card content -->
+          <div class="card-header">
+            <div class="apartment-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+                <polyline points="9 22 9 12 15 12 15 22" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="apartment-id">ID: {{ apartment.id }}</div>
+          </div>
+
+          <div class="card-body">
+            <h3 class="apartment-address">{{ apartment.address }}</h3>
+            <p class="apartment-note" *ngIf="apartment.note">{{ apartment.note }}</p>
+            <p class="apartment-note empty" *ngIf="!apartment.note">No additional details</p>
+          </div>
+
+          <div class="card-footer">
+            <button class="view-btn">
+              <span>View Details</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty state -->
+    <section class="empty-state" *ngIf="apartments.length === 0">
+      <div class="empty-content">
+        <div class="empty-icon">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" 
+              stroke="url(#gradient)" 
+              stroke-width="1.5" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"/>
+            <polyline points="9 22 9 12 15 12 15 22" 
+              stroke="url(#gradient)" 
+              stroke-width="1.5" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h2>No Properties Yet</h2>
+        <p>Start by adding your first rental property below</p>
+      </div>
+    </section>
+
+    <!-- Add apartment form -->
+    <section class="add-apartment">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>Add New Property</h2>
+          <p>Enter the details of your rental apartment</p>
+        </div>
+
+        <form class="apartment-form" (ngSubmit)="addApartment()">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="address">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+                  <circle cx="12" cy="10" r="3" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+                </svg>
+                Property Address
+              </label>
+              <input 
+                type="text" 
+                id="address" 
+                [(ngModel)]="newApartment.address" 
+                name="address"
+                placeholder="123 Main Street, City Name"
+                required
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="note">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"/>
+                </svg>
+                Property Details
+              </label>
+              <textarea 
+                id="note" 
+                [(ngModel)]="newApartment.note" 
+                name="note"
+                placeholder="Add any important details about the property (bedrooms, amenities, special features...)"
+                rows="4"
+                class="form-input"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-btn" [disabled]="!newApartment.address">
+              <span>Add Property</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <line x1="12" y1="5" x2="12" y2="19" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+                <line x1="5" y1="12" x2="19" y2="12" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Custom Toast Container -->
+  <div class="toast-container" *ngIf="toastMessage">
+    <div class="toast-message" [ngClass]="'toast-' + toastMessage.severity">
+      <div class="toast-icon">
+        <svg *ngIf="toastMessage.severity === 'success'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg *ngIf="toastMessage.severity === 'error'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg *ngIf="toastMessage.severity === 'info'" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="8" r="1" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="toast-content">
+        <div class="toast-title">{{ toastMessage.summary }}</div>
+        <div class="toast-detail">{{ toastMessage.detail }}</div>
+      </div>
+      <button class="toast-close" (click)="clearToast()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
   </div>
-</div>
-
-<ng-template #noApartments>
-  <p>Brak dostępnych mieszkań.</p>
-</ng-template>
-
-<div class="add-apartment">
-  <h2>Dodaj nowe mieszkanie</h2>
-  <form (ngSubmit)="addApartment()" #apartmentForm="ngForm">
-    <label for="address">Adres:</label>
-    <input type="text" id="address" name="address" [(ngModel)]="newApartment.address" required>
-
-    <label for="note">Informacje:</label>
-    <textarea id="note" name="note" [(ngModel)]="newApartment.note"></textarea>
-
-    <button type="submit">Dodaj mieszkanie</button>
-  </form>
 </div>
