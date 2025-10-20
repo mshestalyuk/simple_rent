@@ -16,14 +16,11 @@ RUN addgroup -g 1001 -S nodejs && \
 
 WORKDIR /app
 
-# Copy package files for frontend server
 COPY frontend_server/package*.json ./
 
-# Install production dependencies only
 RUN npm ci --omit=dev && \
     npm cache clean --force
 
-# Copy server code
 COPY frontend_server/server.js ./
 COPY --from=angular-build /app/dist/angular-primeng-app ./dist
 
